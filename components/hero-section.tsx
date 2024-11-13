@@ -6,6 +6,19 @@ import { Monitor, Rocket } from "lucide-react"
 import { motion } from "framer-motion"
 
 export default function Component() {
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Fundi Mtandao",
+        "description": "Professional web development and digital marketing services",
+        "url": "https://fundi-mtandao.vercel.app",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://fundi-mtandao.vercel.app/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+
     return (
         <section className="w-full py-12 min-h-[60vh]">
             <div className="container px-4 md:px-6">

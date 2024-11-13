@@ -8,6 +8,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Metadata } from 'next'
 
 const services = [
     {
@@ -110,6 +111,16 @@ const services = [
         ]
     },
 ]
+
+export const metadata: Metadata = {
+    title: "Professional Web Development & Digital Marketing Services",
+    description: "Comprehensive web development and digital marketing services including custom websites, SEO, PPC, and social media marketing.",
+    openGraph: {
+        title: "Professional Web Development & Digital Marketing Services",
+        description: "Comprehensive web development and digital marketing services including custom websites, SEO, PPC, and social media marketing.",
+        images: [{ url: '/images/services-og.jpg' }]
+    }
+}
 
 export default function ServicesPage() {
     const [activeTab, setActiveTab] = useState('all')
