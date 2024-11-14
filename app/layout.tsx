@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 
 const geistSans = localFont({
@@ -59,11 +61,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
+
         <Header />
         <main className="flex-grow">
           {children}
         </main>
         <Footer />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
