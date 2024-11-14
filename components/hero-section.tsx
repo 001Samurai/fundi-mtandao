@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Monitor, Rocket } from "lucide-react"
 import { motion } from "framer-motion"
+import Link from "next/link"
 
 export default function Component() {
     const structuredData = {
@@ -68,22 +69,26 @@ export default function Component() {
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <Button className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-                                    <Rocket className="mr-2 h-5 w-5" />
-                                    Get Started
-                                </Button>
+                                <Link href="/get-started">
+                                    <Button className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90">
+                                        <Rocket className="mr-2 h-5 w-5" />
+                                        Get Started
+                                    </Button>
+                                </Link>
                             </motion.div>
                             <motion.div
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                <Button
-                                    variant="outline"
-                                    className="inline-flex items-center justify-center rounded-lg border px-6 py-3 text-sm font-medium"
-                                >
-                                    <Monitor className="mr-2 h-5 w-5" />
-                                    Our Services
-                                </Button>
+                                <Link href="/services">
+                                    <Button
+                                        variant="outline"
+                                        className="inline-flex items-center justify-center rounded-lg border px-6 py-3 text-sm font-medium"
+                                    >
+                                        <Monitor className="mr-2 h-5 w-5" />
+                                        Our Services
+                                    </Button>
+                                </Link>
                             </motion.div>
                         </motion.div>
                     </div>

@@ -2,114 +2,14 @@
 
 import { useState, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ArrowRight, Code, Megaphone, BarChart, Zap, Layers, Search, ShoppingCart, PenTool, Users } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-
-const services = [
-    {
-        icon: Code,
-        title: 'Web Development',
-        description: 'Custom websites and web applications tailored to your unique business needs.',
-        details: [
-            'Responsive design for all devices',
-            'Performance optimization',
-            'Custom functionality and integrations',
-            'Content Management Systems (CMS)',
-        ]
-    },
-    {
-        icon: Megaphone,
-        title: 'Digital Marketing',
-        description: 'Comprehensive strategies to boost your online presence and reach your target audience.',
-        details: [
-            'Search Engine Optimization (SEO)',
-            'Pay-Per-Click (PPC) advertising',
-            'Social Media Marketing',
-            'Content Marketing',
-        ]
-    },
-    {
-        icon: BarChart,
-        title: 'Analytics & Reporting',
-        description: 'Data-driven insights to measure and improve your digital performance.',
-        details: [
-            'Website analytics setup and tracking',
-            'Custom dashboard creation',
-            'Conversion rate optimization',
-            'Regular performance reports',
-        ]
-    },
-    {
-        icon: Zap,
-        title: 'Performance Optimization',
-        description: 'Enhance your website\'s speed and efficiency for better user experience and SEO.',
-        details: [
-            'Page speed optimization',
-            'Server-side rendering',
-            'Caching strategies',
-            'Image and asset optimization',
-        ]
-    },
-    {
-        icon: Layers,
-        title: 'UI/UX Design',
-        description: 'Create intuitive and visually appealing interfaces that delight your users.',
-        details: [
-            'User research and persona development',
-            'Wireframing and prototyping',
-            'Visual design and branding',
-            'Usability testing',
-        ]
-    },
-    {
-        icon: Search,
-        title: 'SEO Services',
-        description: 'Improve your search engine rankings and drive organic traffic to your website.',
-        details: [
-            'Keyword research and strategy',
-            'On-page and technical SEO',
-            'Link building and outreach',
-            'Local SEO optimization',
-        ]
-    },
-    {
-        icon: ShoppingCart,
-        title: 'E-commerce Solutions',
-        description: 'Build and optimize online stores that drive sales and customer satisfaction.',
-        details: [
-            'Custom e-commerce website development',
-            'Shopping cart and checkout optimization',
-            'Payment gateway integration',
-            'Inventory management systems',
-        ]
-    },
-    {
-        icon: PenTool,
-        title: 'Content Creation',
-        description: 'Develop engaging and SEO-friendly content that resonates with your audience.',
-        details: [
-            'Blog post and article writing',
-            'Copywriting for websites and ads',
-            'Infographic and visual content design',
-            'Video script writing',
-        ]
-    },
-    {
-        icon: Users,
-        title: 'Social Media Management',
-        description: 'Build and engage your community across various social media platforms.',
-        details: [
-            'Social media strategy development',
-            'Content calendar creation and management',
-            'Community engagement and moderation',
-            'Social media advertising campaigns',
-        ]
-    },
-]
+import Link from 'next/link'
+import { services, Service } from '@/data/serviceData'
 
 export default function ServicesPage() {
     const [activeTab, setActiveTab] = useState('all')
@@ -118,7 +18,7 @@ export default function ServicesPage() {
 
     const filterServices = (category: string) => {
         if (category === 'all') return services
-        return services.filter(service => service.title.toLowerCase().includes(category))
+        return services.filter(service => service.category === category)
     }
 
     return (
@@ -164,46 +64,53 @@ export default function ServicesPage() {
 
             <main className="container mx-auto px-4 py-16">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
-                    <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-2">
+                    <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
                         <TabsTrigger value="all">All Services</TabsTrigger>
                         <TabsTrigger value="web">Web</TabsTrigger>
                         <TabsTrigger value="marketing">Marketing</TabsTrigger>
                         <TabsTrigger value="design">Design</TabsTrigger>
                         <TabsTrigger value="analytics">Analytics</TabsTrigger>
+                        <TabsTrigger value="mobile">Mobile</TabsTrigger>
                     </TabsList>
                 </Tabs>
 
                 <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                    {filterServices(activeTab).map((service, index) => (
-                        <motion.div
-                            key={service.title}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                        >
-                            <Card className="h-full flex flex-col">
-                                <CardHeader>
-                                    <service.icon className="h-10 w-10 text-primary mb-2" />
-                                    <CardTitle>{service.title}</CardTitle>
-                                    <CardDescription>{service.description}</CardDescription>
-                                </CardHeader>
-                                <CardContent className="flex-grow">
-                                    <ul className="list-disc list-inside space-y-2">
-                                        {service.details.map((detail, idx) => (
-                                            <li key={idx}>{detail}</li>
-                                        ))}
-                                    </ul>
-                                </CardContent>
-                                <CardFooter>
-                                    <Button className="w-full">
-                                        Learn More
-                                        <ArrowRight className="ml-2 h-4 w-4" />
-                                    </Button>
-                                </CardFooter>
-                            </Card>
-                        </motion.div>
-                    ))}
+                    {filterServices(activeTab).map((service, index) => {
+                        const ServiceIcon = service.icon
+                        return (
+                            <motion.div
+                                key={service.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                            >
+                                <Card className="h-full flex flex-col">
+                                    <CardHeader>
+                                        <ServiceIcon className="h-10 w-10 text-primary mb-2" />
+                                        <CardTitle>{service.title}</CardTitle>
+                                        <CardDescription>{service.description}</CardDescription>
+                                    </CardHeader>
+                                    <CardContent className="flex-grow">
+                                        <ul className="list-disc list-inside space-y-2">
+                                            {service.details.map((detail, idx) => (
+                                                <li key={idx}>{detail}</li>
+                                            ))}
+                                        </ul>
+                                    </CardContent>
+                                    <CardFooter>
+                                        <Button className="w-full" asChild>
+                                            <Link href={`/services/service/${service.slug}`}>
+                                                Learn More
+                                                <ArrowRight className="ml-2 h-4 w-4" />
+                                            </Link>
+                                        </Button>
+                                    </CardFooter>
+                                </Card>
+                            </motion.div>
+                        )
+                    })}
                 </div>
+
 
                 <section className="mt-20">
                     <h2 className="text-3xl font-bold text-center mb-8">Why Choose DigitalCraft?</h2>
@@ -268,8 +175,6 @@ export default function ServicesPage() {
                     </div>
                 </section>
             </main>
-
-
         </div>
     )
 }

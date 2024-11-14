@@ -138,7 +138,7 @@ export default function AboutUsSection() {
               <h4 className="text-xl font-semibold mb-4">Get in Touch</h4>
               <div className="flex items-center mb-2">
                 <Mail className="h-5 w-5 mr-2" />
-                <span>Email: info@digitalcraftagency.com</span>
+                <span>Email: info@fundi-mtandao.com</span>
               </div>
               <div className="flex items-center mb-2">
                 <BarChart className="h-5 w-5 mr-2" />

@@ -13,6 +13,7 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import Link from "next/link"
 
 // Define the Project interface
 interface Project {
@@ -157,10 +158,13 @@ export default function AdvancedPortfolio() {
                 <div className="text-center">
                     <h3 className="text-2xl font-bold mb-6">Ready to start your project?</h3>
                     <div className="flex justify-center gap-4">
-                        <Button size="lg" className="group">
-                            Get in Touch
-                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
+                        <Link href="/contact">
+                            <Button size="lg" className="group">
+                                Get in Touch
+                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </Button>
+                        </Link>
+
                         <Button size="lg" variant="outline" asChild>
                             <a href="/portfolio">View All Projects</a>
                         </Button>

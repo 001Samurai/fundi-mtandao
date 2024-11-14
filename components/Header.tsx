@@ -39,10 +39,15 @@ export function Header() {
                     ))}
                 </nav>
                 <div className="hidden sm:flex items-center space-x-4">
-                    <Button variant="outline" size="sm">
-                        Login
-                    </Button>
-                    <Button size="sm">Register</Button>
+                    <Link href="/get-started">
+                        <Button variant="outline" size="sm">
+                            Login
+                        </Button>
+                    </Link>
+                    <Link href="/get-started">
+                        <Button size="sm">Register</Button>
+                    </Link>
+
                 </div>
                 <Sheet open={isOpen} onOpenChange={setIsOpen}>
                     <SheetTrigger asChild className="ml-auto sm:hidden">

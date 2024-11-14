@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Code, Megaphone, Paintbrush } from "lucide-react"
+import { Code, Link as LucideLink, Megaphone, Paintbrush } from "lucide-react"
+import NextLink from "next/link"
 
 export function ServicesSection() {
     const services = [
@@ -37,7 +38,9 @@ export function ServicesSection() {
                     ))}
                 </div>
                 <div className="mt-8 text-center">
-                    <Button>View All Services</Button>
+                    <NextLink href="/services">
+                        <Button>View All Services</Button>
+                    </NextLink>
                 </div>
             </div>
         </section>
