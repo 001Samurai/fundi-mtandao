@@ -54,7 +54,7 @@ export default function ServicesPage() {
                         animate={headerInView ? { scale: 1, opacity: 1 } : {}}
                         transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                        <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                        <Button size="lg">
                             Get Started
                             <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
@@ -64,8 +64,8 @@ export default function ServicesPage() {
 
             <main className="container mx-auto px-4 py-16">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
-                    <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2">
-                        <TabsTrigger value="all">All Services</TabsTrigger>
+                    <TabsList className="grid w-full grid-cols-6 text-xs md:grid-cols-6 lg:grid-cols-6 gap-2 bg-[#175379] text-white">
+                        <TabsTrigger value="all">All</TabsTrigger>
                         <TabsTrigger value="web">Web</TabsTrigger>
                         <TabsTrigger value="marketing">Marketing</TabsTrigger>
                         <TabsTrigger value="design">Design</TabsTrigger>
@@ -98,7 +98,7 @@ export default function ServicesPage() {
                                         </ul>
                                     </CardContent>
                                     <CardFooter>
-                                        <Button className="w-full" asChild>
+                                        <Button className="w-full hover:text-white" asChild>
                                             <Link href={`/services/service/${service.slug}`}>
                                                 Learn More
                                                 <ArrowRight className="ml-2 h-4 w-4" />
@@ -159,7 +159,7 @@ export default function ServicesPage() {
                     </Accordion>
                 </section>
 
-                <section className="mt-20 bg-primary text-primary-foreground rounded-lg p-8">
+                <section className="mt-20 bg-primary/40 text-primary-foreground rounded-lg p-8">
                     <div className="max-w-3xl mx-auto text-center">
                         <h2 className="text-3xl font-bold mb-4">Ready to Elevate Your Digital Presence?</h2>
                         <p className="text-lg mb-8">Let's discuss how DigitalCraft can help your business thrive in the digital landscape.</p>
