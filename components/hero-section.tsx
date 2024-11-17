@@ -26,16 +26,18 @@ export default function Component() {
                 <div className="flex flex-col gap-8 lg:flex-row lg:gap-12">
                     <div className="order-first w-full lg:order-last lg:w-1/2">
                         <div className="relative aspect-square overflow-hidden rounded-xl">
-                            <Image
-                                src="/3094359.jpg?height=400&width=600"
-                                alt="DigitalCraft Agency Team"
-                                width={600}
-                                height={400}
-                                className="rounded-lg"
-                            />
+                            <video
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                className="h-full w-full object-cover rounded-lg"
+                            >
+                                <source src="/web-devices.mp4" type="video/mp4" />
+                            </video>
                         </div>
                     </div>
-                    <div className="flex flex-col items-center text-center px-3 lg:mt-32 lg:items-start lg:text-left lg:w-1/2">
+                    <div className="flex flex-col items-center text-center text-[#175379] px-3 lg:mt-32 lg:items-start lg:text-left lg:w-1/2">
                         <motion.h1
                             className="text-4xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none mb-8 flex flex-col"
                             initial={{ opacity: 0, y: 20 }}
@@ -43,14 +45,14 @@ export default function Component() {
                             transition={{ duration: 0.6 }}
                         >
                             <span>
-                                <span className="text-[#00e0c1] mb-2">Transforming</span> Ideas
+                                <span className="text-[#e47a33] mb-2">Transforming</span> Ideas
                             </span>
                             <span className="flex justify-center mb-2" >Into</span>
                             <span>Digital Excellence</span>
                         </motion.h1>
 
                         <motion.p
-                            className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400 mb-8"
+                            className="max-w-[600px] text-gray-800 md:text-xl dark:text-gray-400 mb-8"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
@@ -70,7 +72,7 @@ export default function Component() {
                                 whileTap={{ scale: 0.95 }}
                             >
                                 <Link href="/get-started">
-                                    <Button className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90">
+                                    <Button className="inline-flex items-center justify-center rounded-lg px-6 py-3 text-sm font-medium">
                                         <Rocket className="mr-2 h-5 w-5" />
                                         Get Started
                                     </Button>

@@ -50,10 +50,10 @@ const timelines = [
 ]
 
 const budgetRanges = [
-    "$5,000 - $10,000",
-    "$10,000 - $20,000",
-    "$20,000 - $50,000",
-    "$50,000+",
+    "KES 15,000 - KES 20,000",
+    "KES 20,000 - KES 30,000",
+    "KES 30,000 - KES 50,000",
+    "KES 50,000+",
 ]
 
 export default function CTASection() {
@@ -89,11 +89,27 @@ export default function CTASection() {
         if (step > 1) setStep(step - 1)
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        console.log('Submitted:', projectInfo)
-        // Here you would typically send this data to your server or CRM
-        setStep(5) // Move to the thank you step
+        try {
+            const response = await fetch('/api/cta', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(projectInfo),
+            })
+            if (response.ok) {
+                console.log('Quote request submitted successfully')
+                setStep(5) // Move to the thank you step
+            } else {
+                console.error('Failed to submit quote request')
+                // Handle error (e.g., show error message to user)
+            }
+        } catch (error) {
+            console.error('Error submitting quote request:', error)
+            // Handle error (e.g., show error message to user)
+        }
     }
 
     const isStepComplete = () => {
@@ -161,6 +177,7 @@ export default function CTASection() {
                                     value={projectInfo.project_description}
                                     onChange={handleInputChange}
                                     placeholder="Describe your project in detail"
+                                    className='w-full'
                                     required
                                 />
                             </div>
@@ -185,6 +202,7 @@ export default function CTASection() {
                                     value={projectInfo.target_audience}
                                     onChange={handleInputChange}
                                     placeholder="Describe your target audience"
+                                    className='w-full'
                                     required
                                 />
                             </div>
@@ -237,6 +255,7 @@ export default function CTASection() {
                                     value={projectInfo.name}
                                     onChange={handleInputChange}
                                     placeholder="Your full name"
+                                    className='w-ful'
                                     required
                                 />
                             </div>
@@ -248,6 +267,7 @@ export default function CTASection() {
                                     value={projectInfo.company}
                                     onChange={handleInputChange}
                                     placeholder="Your company name"
+                                    className='w-ful'
                                     required
                                 />
                             </div>
@@ -260,6 +280,7 @@ export default function CTASection() {
                                     value={projectInfo.email}
                                     onChange={handleInputChange}
                                     placeholder="your@email.com"
+                                    className='w-ful'
                                     required
                                 />
                             </div>
@@ -272,6 +293,7 @@ export default function CTASection() {
                                     value={projectInfo.phone}
                                     onChange={handleInputChange}
                                     placeholder="Your phone number"
+                                    className='w-ful'
                                     required
                                 />
                             </div>
@@ -283,6 +305,7 @@ export default function CTASection() {
                                     type="url"
                                     value={projectInfo.website_url}
                                     onChange={handleInputChange}
+                                    className='w-ful'
                                     placeholder="https://example.com"
                                 />
                             </div>

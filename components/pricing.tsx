@@ -2,7 +2,7 @@ import Balancer from "react-wrap-balancer";
 import { Article, Container, Section } from "@/components/ui/craft";
 import { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { CircleCheck } from "lucide-react";
+import { CircleCheck } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 
@@ -23,7 +23,7 @@ const pricingData: PricingCardProps[] = [
         description: "Perfect for small businesses and professional individuals.",
         features: ["3 Pages", "Basic SEO", "Email Support", "Responsive Design"],
         cta: "Choose Basic",
-        href: "https://stripe.com/",
+        href: "/package-selection?plan=basic",
     },
     {
         title: "Standard",
@@ -36,7 +36,7 @@ const pricingData: PricingCardProps[] = [
             "24/7 Chat Support",
         ],
         cta: "Choose Standard",
-        href: "https://stripe.com/",
+        href: "/package-selection?plan=standard",
     },
     {
         title: "Pro",
@@ -49,7 +49,7 @@ const pricingData: PricingCardProps[] = [
             "Custom API Integration",
         ],
         cta: "Choose Pro",
-        href: "https://stripe.com/",
+        href: "/package-selection?plan=pro",
     },
 ];
 
@@ -93,7 +93,7 @@ const PricingCard = ({ plan }: { plan: PricingCardProps }) => {
             </ul>
 
             <div className="mt-auto pt-6">
-                <Link href={plan.href} target="_blank">
+                <Link href={plan.href}>
                     <Button size={"sm"} className="w-full">
                         {plan.cta}
                     </Button>

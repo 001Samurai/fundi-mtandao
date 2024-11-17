@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { ChevronDown, Code, Megaphone, BarChart, Mail } from 'lucide-react'
+import Link from 'next/link'
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -31,7 +32,7 @@ export default function AboutUsSection() {
           animate="visible"
           variants={fadeIn}
         >
-          Welcome to DigitalCraft Agency
+          Welcome to Fundi wa Mtandao.
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-8 items-center mb-12">
@@ -54,14 +55,21 @@ export default function AboutUsSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="px-4 sm:px-6 md:px-8 max-w-full overflow-hidden">
-              <h3 className="text-wrap-balance text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-4">Your Partner in Digital Excellence</h3>
-              <p className="text-wrap-balance text-muted-foreground text-sm sm:text-base mb-4">
-                At DigitalCraft Agency, we offer a comprehensive suite of web development and digital marketing services. From stunning websites to powerful online campaigns, we're here to elevate your digital presence and drive your business growth.
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-4">Your Partner in Digital Excellence!</h3>
+              <p className="text-sm sm:text-base mb-4">
+                At Fundi wa Mtandao, we offer a comprehensive suite of web development and digital marketing services. From stunning websites to powerful online campaigns, we're here to elevate your digital presence and drive your business growth.
               </p>
-              <Button onClick={() => setIsExpanded(!isExpanded)}>
-                Learn More
-                <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-              </Button>
+              <div className="flex space-x-2">
+                <Button onClick={() => setIsExpanded(!isExpanded)}>
+                  Learn More
+                  <ChevronDown className={`ml-2 h-4 w-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+                </Button>
+                <Link href="/about">
+                  <Button variant="outline" className="w-full sm:w-auto">
+                    See About Page
+                  </Button>
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -78,7 +86,7 @@ export default function AboutUsSection() {
                   Our team of expert developers and marketers work tirelessly to create tailored solutions that meet your unique business needs. We combine cutting-edge technology with creative strategies to deliver results that exceed expectations.
                 </p>
                 <p>
-                  Whether you're a small startup or an established enterprise, DigitalCraft Agency is committed to helping you thrive in the digital landscape. We pride ourselves on our innovative approach, attention to detail, and dedication to client success.
+                  Whether you're a small startup or an established enterprise, we are committed to helping you thrive in the digital landscape. We pride ourselves on our innovative approach, attention to detail, and dedication to client success.
                 </p>
               </CardContent>
             </Card>
@@ -86,7 +94,7 @@ export default function AboutUsSection() {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <Card>
                 <CardContent className="pt-6">
-                  <Code className="h-12 w-12 text-primary mb-4" />
+                  <Code className="h-12 w-12 text-[#e47a33] mb-4" />
                   <h4 className="text-xl font-semibold mb-2">Web Development</h4>
                   <p className="text-sm text-muted-foreground">
                     Custom websites and web applications built with the latest technologies.
@@ -95,7 +103,7 @@ export default function AboutUsSection() {
               </Card>
               <Card>
                 <CardContent className="pt-6">
-                  <Megaphone className="h-12 w-12 text-primary mb-4" />
+                  <Megaphone className="h-12 w-12 text-[#e47a33] mb-4" />
                   <h4 className="text-xl font-semibold mb-2">Digital Marketing</h4>
                   <p className="text-sm text-muted-foreground">
                     Comprehensive strategies to boost your online presence and reach.
@@ -104,7 +112,7 @@ export default function AboutUsSection() {
               </Card>
               <Card>
                 <CardContent className="pt-6">
-                  <BarChart className="h-12 w-12 text-primary mb-4" />
+                  <BarChart className="h-12 w-12 text-[#e47a33] mb-4" />
                   <h4 className="text-xl font-semibold mb-2">Analytics & SEO</h4>
                   <p className="text-sm text-muted-foreground">
                     Data-driven insights and optimization to improve your performance.
@@ -140,10 +148,12 @@ export default function AboutUsSection() {
                 <Mail className="h-5 w-5 mr-2" />
                 <span>Email: info@fundi-mtandao.com</span>
               </div>
-              <div className="flex items-center mb-2">
-                <BarChart className="h-5 w-5 mr-2" />
-                <span>Schedule a Free Consultation</span>
-              </div>
+              <a href='/get-started'>
+                <div className="flex items-center hover:text-[#e47a33] mb-2">
+                  <BarChart className="h-5 w-5 mr-2" />
+                  <span>Schedule a Free Consultation</span>
+                </div>
+              </a>
             </div>
           </motion.div>
         )}

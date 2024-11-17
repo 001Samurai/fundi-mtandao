@@ -30,7 +30,7 @@ export function ServicesSection() {
                     {services.map((service, index) => (
                         <Card key={index}>
                             <CardContent className="flex flex-col items-center space-y-4 p-6">
-                                <service.icon className="h-12 w-12 text-green-300" />
+                                <service.icon className="h-12 w-12 text-[#e47a33] " />
                                 <h3 className="text-xl font-bold">{service.title}</h3>
                                 <p className="text-center text-gray-600">{service.description}</p>
                             </CardContent>

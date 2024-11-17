@@ -9,6 +9,8 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { ChevronDown, Menu, MonitorCog, X } from "lucide-react"
+import Image from "next/image"
+import { motion } from 'framer-motion';
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false)
@@ -25,15 +27,25 @@ export function Header() {
     ]
 
     return (
-        <header className="sticky top-0 z-50 w-full px-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="container flex h-14 items-center">
-                <Link href="/" className="flex items-center space-x-2">
-                    <MonitorCog className="h-6 w-6" />
-                    <span className="font-bold">WEBFUNDI</span>
+        <header className="sticky top-0 z-50 w-full px-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            <div className="container flex h-16 items-center">
+                <Link href="/" className="flex items-center">
+                    <motion.div
+                        whileHover={{ scale: 1.2, rotate: 7 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                    >
+                        <Image
+                            src="/fwm-logo.png"
+                            alt="Fundi wa Mtandao Logo"
+                            width={96}
+                            height={96}
+                            className="h-24 w-24 px-2 object-contain"
+                        />
+                    </motion.div>
                 </Link>
                 <nav className="hidden sm:flex items-center justify-center flex-1 mx-4">
                     {menuItems.map((item) => (
-                        <Link key={item.href} href={item.href} className="text-sm font-medium px-4">
+                        <Link key={item.href} href={item.href} className="text-sm text-[#175379] hover:text-[#e47a33] font-medium px-4">
                             {item.label}
                         </Link>
                     ))}
@@ -41,11 +53,11 @@ export function Header() {
                 <div className="hidden sm:flex items-center space-x-4">
                     <Link href="/get-started">
                         <Button variant="outline" size="sm">
-                            Login
+                            Get Started
                         </Button>
                     </Link>
-                    <Link href="/get-started">
-                        <Button size="sm">Register</Button>
+                    <Link href="/contact">
+                        <Button size="sm">Contact Us</Button>
                     </Link>
 
                 </div>
@@ -62,19 +74,36 @@ export function Header() {
                                 <Link
                                     key={item.href}
                                     href={item.href}
-                                    className="text-sm font-medium"
+                                    className="text-sm text-[#175379] font-medium"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {item.label}
                                 </Link>
                             ))}
-                            <Button variant="outline" size="sm" className="w-full">
-                                Login
-                            </Button>
-                            <Button size="sm" className="w-full">
-                                Register
-                            </Button>
+                            <Link href="/get-started">
+                                <Button variant="outline" size="sm" className="w-full">
+                                    Get Started
+                                </Button>
+                            </Link>
+                            <Link href="/contact">
+                                <Button size="sm" className="w-full">
+                                    Contact Us
+                                </Button>
+                            </Link>
                         </nav>
+
+                        <div className="flex flex-col items-center space-y-2 mt-7">
+                            <Image
+                                src="/fwm-logo.png"
+                                alt="Fundi wa Mtandao Logo"
+                                width={160}
+                                height={160}
+                                className="h-40 w-40 object-contain"
+                            />
+                            <p className="text-sm text-muted-foreground italic text-center">
+                                Your Digital Solutions Partner
+                            </p>
+                        </div>
                     </SheetContent>
                 </Sheet>
             </div>

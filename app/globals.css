@@ -77,6 +77,28 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  /* New styles for headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #175379;
+    /* Set color for all headings */
+  }
+
+  /* Link hover state */
+  a {
+    color: inherit;
+    /* Ensure links inherit the default text color */
+  }
+
+  a:hover {
+    color: #e47a33;
+    /* Set hover color for links */
+  }
 }
 
 @layer utilities {
