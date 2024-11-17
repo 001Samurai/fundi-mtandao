@@ -48,8 +48,8 @@ export default function AboutPage() {
                     <Image
                         src="/images/social.jpg"
                         alt="support-small-biz"
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        className="object-cover"
                         quality={100}
                     />
                     <div className="absolute inset-0 bg-black/50" />
@@ -80,7 +80,7 @@ export default function AboutPage() {
                                     I'm passionate about crafting digital solutions that drive business growth and user engagement.
                                 </p>
                                 <div className="flex gap-4">
-                                    <Link href="https://github.com/davidmachua" target="_blank" rel="noopener noreferrer">
+                                    <Link href="https://github.com/001Samurai" target="_blank" rel="noopener noreferrer">
                                         <Button variant="outline" size="icon">
                                             <Github className="h-4 w-4" />
                                             <span className="sr-only">GitHub</span>
@@ -92,7 +92,7 @@ export default function AboutPage() {
                                             <span className="sr-only">LinkedIn</span>
                                         </Button>
                                     </Link>
-                                    <Link href="https://twitter.com/davidmachua" target="_blank" rel="noopener noreferrer">
+                                    <Link href="https://x.com/machua_001" target="_blank" rel="noopener noreferrer">
                                         <Button variant="outline" size="icon">
                                             <Twitter className="h-4 w-4" />
                                             <span className="sr-only">Twitter</span>
@@ -105,20 +105,20 @@ export default function AboutPage() {
                 </Card>
 
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-16">
-                    <TabsList className="grid w-full grid-cols-3">
-                        <TabsTrigger value="about">About DigitalCraft</TabsTrigger>
+                    <TabsList className="grid w-full grid-cols-3 bg-[#175379] text-white">
+                        <TabsTrigger value="about">About Us</TabsTrigger>
                         <TabsTrigger value="services">Our Services</TabsTrigger>
                         <TabsTrigger value="journey">Our Journey</TabsTrigger>
                     </TabsList>
                     <TabsContent value="about">
                         <Card>
                             <CardHeader>
-                                <CardTitle>About DigitalCraft</CardTitle>
+                                <CardTitle>About Fundi wa Mtandao</CardTitle>
                                 <CardDescription>Your partner in digital excellence since 2023</CardDescription>
                             </CardHeader>
                             <CardContent>
                                 <p className="mb-4">
-                                    WebFundi is a solopreneur venture founded by David Machua in Mombasa, Kenya.
+                                    Fundi wa Mtandao is a solopreneur venture founded by David Machua in Mombasa, Kenya.
                                     We specialize in delivering high-quality web development, digital marketing, and
                                     project management services to businesses of all sizes.
                                 </p>
@@ -129,7 +129,7 @@ export default function AboutPage() {
                                     in the digital landscape.
                                 </p>
                                 <p>
-                                    While primarily operating as a solo entrepreneur, DigitalCraft collaborates with a
+                                    While primarily operating as a solo entrepreneur, Fundi wa Mtandao collaborates with a
                                     network of trusted local and online freelancers for larger projects, ensuring
                                     scalability and diverse expertise when needed.
                                 </p>
@@ -155,7 +155,7 @@ export default function AboutPage() {
                         <Card>
                             <CardHeader>
                                 <CardTitle>Our Journey</CardTitle>
-                                <CardDescription>From freelancing to founding DigitalCraft</CardDescription>
+                                <CardDescription>From freelancing to founding Fundi wa Mtandao</CardDescription>
                             </CardHeader>
                             <CardContent>
                                 <div className="relative border-l border-primary/30 pl-6 ml-6">
@@ -177,17 +177,17 @@ export default function AboutPage() {
                     </TabsContent>
                 </Tabs>
 
-                <Card className="bg-primary text-primary-foreground">
+                <Card className="bg-primary/40 text-primary-foreground">
                     <CardHeader>
                         <CardTitle>Ready to Elevate Your Digital Presence?</CardTitle>
-                        <CardDescription className="text-primary-foreground/80">Let's discuss how DigitalCraft can help your business thrive online.</CardDescription>
+                        <CardDescription className="text-primary-foreground/80">Let's discuss how Fundi wa Mtandao can help your business thrive online.</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <div className="flex flex-col md:flex-row gap-4 items-center">
                             <div className="flex-1 space-y-2">
                                 <div className="flex items-center">
                                     <Mail className="h-5 w-5 mr-2" />
-                                    <span>david@digitalcraft.com</span>
+                                    <span>dmachua.freelance@gmail.com</span>
                                 </div>
                                 <div className="flex items-center">
                                     <MapPin className="h-5 w-5 mr-2" />
@@ -198,10 +198,13 @@ export default function AboutPage() {
                                     <span>Available for projects worldwide</span>
                                 </div>
                             </div>
-                            <Button size="lg" variant="secondary">
-                                Schedule a Consultation
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
+                            <Link href="/get-started">
+                                <Button size="lg" variant="secondary">
+                                    Schedule a Consultation
+                                    <ArrowRight className="ml-2 h-4 w-4" />
+                                </Button>
+                            </Link>
+
                         </div>
                     </CardContent>
                 </Card>

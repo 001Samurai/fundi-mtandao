@@ -93,6 +93,7 @@ export function PackageSelectionForm() {
                             name="name"
                             value={formData.name}
                             onChange={handleInputChange}
+                            className='w-full'
                             required
                         />
                     </div>
@@ -104,6 +105,7 @@ export function PackageSelectionForm() {
                             type="email"
                             value={formData.email}
                             onChange={handleInputChange}
+                            className='w-full'
                             required
                         />
                     </div>
@@ -115,6 +117,7 @@ export function PackageSelectionForm() {
                             type="tel"
                             value={formData.phone}
                             onChange={handleInputChange}
+                            className='w-full'
                             required
                         />
                     </div>
@@ -125,6 +128,7 @@ export function PackageSelectionForm() {
                             name="company"
                             value={formData.company}
                             onChange={handleInputChange}
+                            className='w-full'
                         />
                     </div>
                     <div className="space-y-2">
@@ -135,6 +139,7 @@ export function PackageSelectionForm() {
                             type="url"
                             value={formData.website}
                             onChange={handleInputChange}
+                            className='w-full'
                         />
                     </div>
                     <div className="space-y-2">
@@ -159,6 +164,7 @@ export function PackageSelectionForm() {
                             name="otherServices"
                             value={formData.otherServices}
                             onChange={handleInputChange}
+                            className='w-full'
                             placeholder="Please specify any other services you're interested in"
                         />
                     </div>
@@ -169,6 +175,7 @@ export function PackageSelectionForm() {
                             name="projectDescription"
                             value={formData.projectDescription}
                             onChange={handleInputChange}
+                            className='w-full'
                             placeholder="Tell us more about your project and specific needs"
                             required
                         />

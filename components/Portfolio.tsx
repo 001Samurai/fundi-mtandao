@@ -33,41 +33,41 @@ interface Project {
 const projects = [
     {
         id: 1,
-        title: "E-commerce Platform Redesign",
-        description: "Revamped a major e-commerce site, resulting in a 40% increase in conversions and 25% decrease in bounce rate.",
-        image: "/images/projects/hotsprings-1.png?height=600&width=800",
-        tags: ["React", "Next.js", "Tailwind CSS", "Stripe"],
+        title: "E-commerce Platform Design",
+        description: "Created a major e-commerce site for a company that sales computers, printers, and other devices, resulting in a 40% increase in overall sales.",
+        image: "/images/projects/hotsprings-1.webp?height=600&width=800",
+        tags: ["React", "Next.js", "Tailwind CSS", "Mpesa"],
         liveUrl: "https://hotsprings-techs.vercel.app/",
-        githubUrl: "https://github.com/example/ecommerce",
+        githubUrl: "https://github.com/001Samurai",
         testimonial: {
-            content: "The redesign transformed our online presence. Our sales have skyrocketed!",
-            author: "Jane Doe, CEO of ExampleShop"
+            content: "The web design transformed our online presence. Our sales have skyrocketed!",
+            author: "Ken, CEO of Hotsprings Technologies"
         }
     },
     {
         id: 2,
-        title: "AI-Powered Content Management System",
-        description: "Developed a CMS with AI-driven content suggestions, improving content quality and reducing production time by 50%.",
-        image: "/images/projects/hotsprings-1.png?height=600&width=800",
-        tags: ["Python", "Django", "React", "TensorFlow"],
-        liveUrl: "https://example-cms.com",
-        githubUrl: "https://github.com/example/ai-cms",
+        title: "Hostel Website and Records Management System",
+        description: "Developed a marketing website for Serenita Hostels and a records management system.",
+        image: "/images/projects/serenita.webp?height=600&width=800",
+        tags: ["React", "Nextjs", "Tailwind CSS", "Javascript"],
+        liveUrl: "https://serenita-hostels-site.vercel.app/",
+        githubUrl: "https://github.com/001Samurai",
         testimonial: {
-            content: "This CMS has revolutionized our content strategy. It's like having an AI assistant!",
-            author: "John Smith, Content Director at TechMedia"
+            content: "This Website has enabled us to market our hostel to a broader audience.The record management system has helped better manage our records.",
+            author: "John, Director at Serenita Hostels"
         }
     },
     {
         id: 3,
-        title: "Blockchain-based Supply Chain Solution",
-        description: "Created a transparent supply chain tracking system using blockchain, increasing trust and efficiency for a Fortune 500 company.",
-        image: "/images/projects/hotsprings-1.png?height=600&width=800",
-        tags: ["Solidity", "Ethereum", "React", "Node.js"],
-        liveUrl: "https://example-supplychain.com",
-        githubUrl: "https://github.com/example/blockchain-supply",
+        title: "A Serviced Apartments Website ",
+        description: "Created a website a  serviced apartments business in Kenya. Led to a 50% increase in brand awareness and 30% increase in sales.",
+        image: "/images/projects/orionhomes.webp?height=600&width=800",
+        tags: ["HTML", "CSS", "Javascript", "Bootstrap"],
+        liveUrl: "https://orionhomeskenya.co.ke",
+        githubUrl: "https://github.com/001Samurai",
         testimonial: {
-            content: "The transparency and efficiency gained from this solution have been game-changing for our operations.",
-            author: "Alice Johnson, CTO of GlobalLogistics"
+            content: "The website has enabled us to reach a broader audience thus increase sales with time thanks to Fundi wa Mtandao!",
+            author: "Mercy, CEO, Orion Homes Kenya"
         }
     }
 ]

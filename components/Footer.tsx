@@ -93,8 +93,8 @@ export default function SophisticatedFooter() {
     return (
         <footer className="bg-gradient-to-b from-background to-primary/20 pt-16 pb-8 border-t-2 border-border">
             <div className="container mx-auto px-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 mb-12">
-                    <div className="lg:col-span-2 px-2 flex flex-col items-center">
+                <div className="grid grid-cols-1 gap-8 mb-12">
+                    <div className="md:col-span-full lg:col-span-2 px-2 flex flex-col items-center">
                         <Link href="/" className="flex items-center space-x-2">
                             <motion.div
                                 className="w-32 h-32 rounded-sm overflow-hidden"
@@ -132,20 +132,22 @@ export default function SophisticatedFooter() {
                             </div>
                         </form>
                     </div>
-                    {footerLinks.map((column, index) => (
-                        <div key={index}>
-                            <h3 className="font-semibold mb-4">{column.title}</h3>
-                            <ul className="space-y-2">
-                                {column.links.map((link, linkIndex) => (
-                                    <li key={linkIndex}>
-                                        <Link href={link.path} className="text-muted-foreground hover:text-foreground transition-colors">
-                                            {link.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+                    <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 lg:px-3 gap-8">
+                        {footerLinks.map((column, index) => (
+                            <div key={index}>
+                                <h3 className="font-semibold mb-4">{column.title}</h3>
+                                <ul className="space-y-2">
+                                    {column.links.map((link, linkIndex) => (
+                                        <li key={linkIndex}>
+                                            <Link href={link.path} className="text-muted-foreground hover:text-foreground transition-colors">
+                                                {link.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t-2 border-border">
                     <p className="text-sm lg:mx-4 text-muted-foreground mb-4 md:mb-0">

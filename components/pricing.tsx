@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 
 interface PricingCardProps {
-    title: "Basic" | "Standard" | "Pro";
+    title: "Basic" | "Standard" | "Entreprise";
     price: string;
     description?: string;
     features: string[];
@@ -39,7 +39,7 @@ const pricingData: PricingCardProps[] = [
         href: "/package-selection?plan=standard",
     },
     {
-        title: "Pro",
+        title: "Entreprise",
         price: "KES 50,000/Month",
         description: "Ideal for larger businesses that need scalability.",
         features: [
@@ -48,7 +48,7 @@ const pricingData: PricingCardProps[] = [
             "Priority Support",
             "Custom API Integration",
         ],
-        cta: "Choose Pro",
+        cta: "Choose Entreprise",
         href: "/package-selection?plan=pro",
     },
 ];
@@ -76,7 +76,7 @@ const PricingCard = ({ plan }: { plan: PricingCardProps }) => {
     return (
         <div className="flex flex-col rounded-lg shadow-md border p-6">
             <div className="text-center">
-                <Badge>{plan.title}</Badge>
+                <Badge className="text-lg bg-[#175391]">{plan.title}</Badge>
                 <h4 className="mb-2 mt-4 text-2xl text-primary">{plan.price}</h4>
                 <p className="text-base opacity-70">{plan.description}</p>
             </div>

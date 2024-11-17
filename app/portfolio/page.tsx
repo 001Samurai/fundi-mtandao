@@ -4,14 +4,13 @@ import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useAnimation, useInView } from 'framer-motion'
-import { ArrowRight, ExternalLink, Github, Star, Award, TrendingUp } from 'lucide-react'
+import { ArrowRight, ExternalLink, Github, Star, TrendingUp, Code, Palette, Smartphone, Globe } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
-// Define the Project interface
 interface Project {
     id: number;
     title: string;
@@ -30,64 +29,155 @@ interface Project {
         label: string;
         value: string;
     }[];
+    deliverables: {
+        icon: React.ElementType;
+        label: string;
+    }[];
 }
 
 const projects: Project[] = [
     {
         id: 1,
-        title: "E-commerce Platform Redesign",
-        description: "Revamped a major e-commerce site, resulting in a 40% increase in conversions and 25% decrease in bounce rate. Implemented modern UI/UX principles and optimized for mobile devices.",
-        image: "/images/projects/ecommerce-redesign.jpg",
-        tags: ["React", "Next.js", "Tailwind CSS", "Stripe"],
-        liveUrl: "https://example-ecommerce.com",
-        githubUrl: "https://github.com/example/ecommerce",
+        title: "E-commerce Platform Design",
+        description: "Created a major e-commerce site for a company that sales computers, printers, and other devices, resulting in a 40% increase in overall sales.",
+        image: "/images/projects/hotsprings-1.webp?height=600&width=800",
+        tags: ["React", "Next.js", "Tailwind CSS", "Mpesa"],
+        liveUrl: "https://hotsprings-techs.vercel.app/",
+        githubUrl: "https://github.com/001Samurai",
         testimonial: {
-            content: "The redesign transformed our online presence. Our sales have skyrocketed, and customer feedback has been overwhelmingly positive.",
-            author: "Jane Doe",
-            company: "CEO of ExampleShop"
+            content: "The web design transformed our online presence. Our sales have skyrocketed!",
+            author: "Ken ",
+            company: "CEO of Hotsprings Technologies"
         },
         results: [
             { icon: TrendingUp, label: "Conversion Rate Increase", value: "40%" },
-            { icon: Star, label: "Customer Satisfaction", value: "4.8/5" },
-            { icon: Award, label: "Design Award Nominee", value: "2023" }
+            { icon: Star, label: "Customer Satisfaction", value: "4.8/5" }
+        ],
+        deliverables: [
+            { icon: Code, label: "Custom E-commerce Development" },
+            { icon: Palette, label: "UI/UX Design" },
+            { icon: Smartphone, label: "Responsive Design" },
+            { icon: Globe, label: "Payment Gateway Integration" }
         ]
     },
     {
         id: 2,
-        title: "AI-Powered Content Management System",
-        description: "Developed a CMS with AI-driven content suggestions, improving content quality and reducing production time by 50%. Integrated machine learning algorithms for personalized user experiences.",
-        image: "/images/projects/ai-cms.jpg",
-        tags: ["Python", "Django", "React", "TensorFlow"],
-        liveUrl: "https://example-cms.com",
-        githubUrl: "https://github.com/example/ai-cms",
+        title: "Hostel Website and Records Management System",
+        description: "Developed a marketing website for Serenita Hostels and a records management system.",
+        image: "/images/projects/serenita.webp?height=600&width=800",
+        tags: ["React", "Nextjs", "Tailwind CSS", "Javascript"],
+        liveUrl: "https://serenita-hostels-site.vercel.app/",
+        githubUrl: "https://github.com/001Samurai",
         testimonial: {
-            content: "This CMS has revolutionized our content strategy. It's like having an AI assistant that understands our brand voice perfectly.",
-            author: "John Smith",
-            company: "Content Director at TechMedia"
+            content: "This Website has enabled us to market our hostel to a broader audience.The record management system has helped better manage our records.",
+            author: "John",
+            company: "Director at Serenita Hostels"
         },
         results: [
-            { icon: TrendingUp, label: "Content Production Efficiency", value: "50%" },
-            { icon: Star, label: "User Engagement Increase", value: "35%" },
-            { icon: Award, label: "AI Innovation Award", value: "2023" }
+            { icon: TrendingUp, label: "Operational Efficiency Increase", value: "50%" },
+            { icon: Star, label: "User Engagement Increase", value: "35%" }
+        ],
+        deliverables: [
+            { icon: Globe, label: "Marketing Website" },
+            { icon: Code, label: "Records Management System" },
+            { icon: Palette, label: "Branding and Design" },
+            { icon: Smartphone, label: "Mobile-Responsive Interface" }
         ]
     },
     {
         id: 3,
-        title: "Blockchain-based Supply Chain Solution",
-        description: "Created a transparent supply chain tracking system using blockchain, increasing trust and efficiency for a Fortune 500 company. Implemented smart contracts for automated processes.",
-        image: "/images/projects/blockchain-supply.jpg",
-        tags: ["Solidity", "Ethereum", "React", "Node.js"],
-        liveUrl: "https://example-supplychain.com",
-        githubUrl: "https://github.com/example/blockchain-supply",
+        title: "A Serviced Apartments Website ",
+        description: "Created a website a  serviced apartments business in Kenya. Led to a 50% increase in brand awareness and 30% increase in sales.",
+        image: "/images/projects/orionhomes.webp?height=600&width=800",
+        tags: ["HTML", "CSS", "Javascript", "Bootstrap"],
+        liveUrl: "https://orionhomeskenya.co.ke",
+        githubUrl: "https://github.com/001Samurai",
         testimonial: {
-            content: "The transparency and efficiency gained from this solution have been game-changing for our operations. We've seen a significant reduction in disputes and delays.",
-            author: "Alice Johnson",
-            company: "CTO of GlobalLogistics"
+            content: "The website has enabled us to reach a broader audience thus increase sales with time thanks to Fundi wa Mtandao!",
+            author: "Mercy",
+            company: "CEO Orion Homes Kenya"
         },
         results: [
-            { icon: TrendingUp, label: "Operational Efficiency Increase", value: "30%" },
-            { icon: Star, label: "Stakeholder Trust Score", value: "9.2/10" },
-            { icon: Award, label: "Supply Chain Innovation", value: "2023" }
+            { icon: TrendingUp, label: "Content Marketing Efficiency", value: "30%" },
+            { icon: Star, label: "Stakeholder Trust Score", value: "9.2/10" }
+        ],
+        deliverables: [
+            { icon: Globe, label: "Custom Website Development" },
+            { icon: Palette, label: "Visual Design" },
+            { icon: Code, label: "Booking System Integration" },
+            { icon: Smartphone, label: "Mobile-Friendly Design" }
+        ]
+    },
+    {
+        id: 4,
+        title: "Blog section for Orion Homes website ",
+        description: "Created a blog website for a  serviced apartments business in Kenya. Performed research and generated the content for the blog posts. Led to a 50% increase in brand awareness and 30% increase in sales.",
+        image: "/images/projects/orionhomes-blog.webp?height=600&width=800",
+        tags: ["HTML", "CSS", "Javascript", "Bootstrap"],
+        liveUrl: "https://orionhomeskenya.co.ke/blog",
+        githubUrl: "https://github.com/001Samurai",
+        testimonial: {
+            content: "The website has enabled us to reach a broader audience thus increase sales with time thanks to Fundi wa Mtandao!",
+            author: "Mercy",
+            company: "CEO Orion Homes Kenya"
+        },
+        results: [
+            { icon: TrendingUp, label: "Content Marketing Efficiency", value: "30%" },
+            { icon: Star, label: "Stakeholder Trust Score", value: "9.2/10" }
+        ],
+        deliverables: [
+            { icon: Code, label: "Blog Development" },
+            { icon: Palette, label: "Content Strategy" },
+            { icon: Globe, label: "SEO Optimization" },
+            { icon: Smartphone, label: "Responsive Blog Design" }
+        ]
+    },
+    {
+        id: 5,
+        title: "Wazo La Mkenya - Youth-Focused Blog",
+        description: "Developed a dynamic blog website called 'Wazo La Mkenya' for a local influencer, targeting Kenyan youth with diverse content ranging from tech innovation to philosophical musings.",
+        image: "/images/projects/wazo-la-mkenya.webp?height=600&width=800",
+        tags: ["HTML", "CSS", "Javascript", "Bootstrap"],
+        liveUrl: "https://wazolamkenya.soon.it/",
+        githubUrl: "https://github.com/001Samurai/wazo-la-mkenya",
+        testimonial: {
+            content: "The blog has become a powerful platform for Kenyan youth to engage with important topics. The design and functionality perfectly capture our vision!",
+            author: "Amani",
+            company: "Founder, Wazo La Mkenya"
+        },
+        results: [
+            { icon: TrendingUp, label: "Monthly Active Users", value: "50K+" },
+            { icon: Star, label: "User Engagement Rate", value: "78%" }
+        ],
+        deliverables: [
+            { icon: Globe, label: "Responsive Blog Website" },
+            { icon: Palette, label: "Custom Theme Design" },
+            { icon: Code, label: "Content Management System" },
+            { icon: Smartphone, label: "Mobile-Optimized Interface" }
+        ]
+    },
+    {
+        id: 6,
+        title: "Team HK CBO - Youth Empowerment Website",
+        description: "Designed and developed a website for Team HK CBO, a local organization focused on youth empowerment. This project marked a significant milestone as one of the first major web development undertakings.",
+        image: "/images/projects/teamHK.webp?height=600&width=800",
+        tags: ["HTML", "CSS", "Javascript", "Bootstrap"],
+        liveUrl: "https://001samurai.github.io/",
+        githubUrl: "https://github.com/001Samurai/team-hk-cbo",
+        testimonial: {
+            content: "The website has significantly boosted our online presence and helped us reach more youth. It's user-friendly and perfectly represents our mission.",
+            author: "Elvis",
+            company: "Director, Team HK CBO"
+        },
+        results: [
+            { icon: TrendingUp, label: "Volunteer Sign-ups", value: "+150%" },
+            { icon: Star, label: "Community Engagement", value: "85%" }
+        ],
+        deliverables: [
+            { icon: Globe, label: "Responsive Website" },
+            { icon: Palette, label: "Branding Integration" },
+            { icon: Code, label: "Interactive Elements" },
+            { icon: Smartphone, label: "Mobile-First Design" }
         ]
     }
 ]
@@ -130,7 +220,7 @@ const PortfolioItem: React.FC<{ project: Project; index: number }> = ({ project,
                                 className="rounded-lg"
                             />
                         </div>
-                        <div className="space-y-4">
+                        <div className="space-y-6">
                             <div className="flex flex-wrap gap-2">
                                 {project.tags.map((tag, index) => (
                                     <Badge key={index} variant="secondary">
@@ -138,20 +228,34 @@ const PortfolioItem: React.FC<{ project: Project; index: number }> = ({ project,
                                     </Badge>
                                 ))}
                             </div>
-                            <div className="grid grid-cols-2 gap-4">
-                                {project.results.map((result, index) => (
-                                    <div key={index} className="flex items-center space-x-2">
-                                        <result.icon className="h-5 w-5 text-primary" />
-                                        <div>
-                                            <p className="text-sm font-medium">{result.label}</p>
-                                            <p className="text-2xl font-bold">{result.value}</p>
+                            <div className="space-y-4">
+                                <h3 className="text-lg font-semibold">Delivered Services:</h3>
+                                <div className="grid grid-cols-2 gap-4">
+                                    {project.deliverables.map((deliverable, index) => (
+                                        <div key={index} className="flex items-center space-x-2">
+                                            <deliverable.icon className="h-5 w-5 text-primary" />
+                                            <p className="text-sm font-medium">{deliverable.label}</p>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
+                            </div>
+                            <div className="space-y-4">
+                                <h3 className="text-lg font-semibold">Delivered results:</h3>
+                                <div className="grid grid-cols-2 gap-4">
+                                    {project.results.map((result, index) => (
+                                        <div key={index} className="flex items-center space-x-2">
+                                            <result.icon className="h-5 w-5 text-primary" />
+                                            <div>
+                                                <p className="text-sm font-medium">{result.label}</p>
+                                                <p className="text-2xl font-bold">{result.value}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                             <div className="flex gap-4">
                                 <Button asChild>
-                                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                                    <a href={project.liveUrl} target="_blank" className='hover:text-white' rel="noopener noreferrer">
                                         View Live <ExternalLink className="ml-2 h-4 w-4" />
                                     </a>
                                 </Button>
@@ -197,7 +301,7 @@ export default function PortfolioPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-            <header ref={headerRef} className="py-20 text-center relative overflow-hidden" style={{ backgroundImage: 'url(/images/responsive-web.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <header ref={headerRef} className="py-20 text-center relative overflow-hidden" style={{ backgroundImage: 'url(/images/responsive-web.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                 <motion.div
                     className="absolute inset-0 z-0"
                     initial={{ scale: 1.2, opacity: 0 }}
@@ -232,8 +336,7 @@ export default function PortfolioPage() {
                         <TabsTrigger value="all">All Projects</TabsTrigger>
                         <TabsTrigger value="react">React</TabsTrigger>
                         <TabsTrigger value="python">Python</TabsTrigger>
-                        <TabsTrigger value="blockchain">Blockchain</TabsTrigger>
-                        <TabsTrigger value="ai">AI/ML</TabsTrigger>
+                        <TabsTrigger value="bootstrap">Bootstrap</TabsTrigger>
                     </TabsList>
                 </Tabs>
 
@@ -243,13 +346,13 @@ export default function PortfolioPage() {
                     ))}
                 </div>
 
-                <section className="mt-20 bg-primary text-primary-foreground rounded-lg p-8">
+                <section className="mt-20 bg-primary/45 text-primary-foreground rounded-lg p-8">
                     <div className="max-w-3xl mx-auto text-center">
                         <h2 className="text-3xl font-bold mb-4">Ready to Bring Your Vision to Life?</h2>
                         <p className="text-lg mb-8">Let's collaborate on your next digital project and create something extraordinary together.</p>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
                             <Button size="lg" variant="secondary" asChild>
-                                <Link href="/contact">
+                                <Link href="/get-started">
                                     Start Your Project
                                     <ArrowRight className="ml-2 h-4 w-4" />
                                 </Link>
