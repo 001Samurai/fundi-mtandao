@@ -332,11 +332,12 @@ export default function PortfolioPage() {
 
             <main className="container mx-auto px-4 py-16">
                 <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
-                    <TabsList className="grid w-full grid-cols-2 md:grid-cols-5 gap-2">
-                        <TabsTrigger value="all">All Projects</TabsTrigger>
+                    <TabsList className="grid w-full grid-cols-5 text-xs md:grid-cols-5 bg-[#175379] text-white gap-2">
+                        <TabsTrigger value="all">All</TabsTrigger>
                         <TabsTrigger value="react">React</TabsTrigger>
                         <TabsTrigger value="python">Python</TabsTrigger>
                         <TabsTrigger value="bootstrap">Bootstrap</TabsTrigger>
+                        <TabsTrigger value="Nextjs">NextJS</TabsTrigger>
                     </TabsList>
                 </Tabs>
 

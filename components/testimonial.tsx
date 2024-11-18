@@ -19,23 +19,23 @@ import {
 const testimonials = [
     {
         id: 1,
-        name: "Alex Johnson",
-        role: "CEO, TechInnovate",
-        content: "DigitalCraft transformed our online presence. Their expertise in web development and digital marketing strategies led to a 200% increase in our customer engagement.",
+        name: "Ken",
+        role: "CEO, Hotsprings Technologies",
+        content: "Fundi wa Mtandao transformed our online presence. Their expertise in web development and digital marketing strategies led to a 200% increase in our customer engagement.",
         avatar: "/images/avatars/placeholder-avatar.png?height=100&width=100"
     },
     {
         id: 2,
-        name: "Samantha Lee",
-        role: "Marketing Director, GrowthGenius",
-        content: "The team at DigitalCraft is simply outstanding. Their innovative approach to our SEO and content strategy put us on the first page of search results for our key terms.",
+        name: "Mercy",
+        role: "Director, Orion Homes",
+        content: "The team at Fundi wa Mtandao is simply outstanding. Their innovative approach to our SEO and content strategy put us on the first page of search results for our key terms.",
         avatar: "/images/avatars/placeholder-avatar.png?height=100&width=100"
     },
     {
         id: 3,
-        name: "Michael Chen",
-        role: "Founder, EcoTech Solutions",
-        content: "DigitalCraft's web design skills are unparalleled. They created a stunning, user-friendly site that perfectly captures our brand essence and has significantly boosted our conversions.",
+        name: "Khadija",
+        role: "Founder, Serenita Hostels",
+        content: "Fundi wa Mtandao's web design skills are unparalleled. They created a stunning, user-friendly site that perfectly captures our brand essence and has significantly boosted our conversions.",
         avatar: "/images/avatars/placeholder-avatar.png?height=100&width=100"
     }
 ]

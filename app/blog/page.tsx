@@ -11,6 +11,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Label } from '@/components/ui/label'
 
 // Mock data for blog posts
 const blogPosts = [
@@ -22,7 +23,7 @@ const blogPosts = [
         date: "2023-11-15",
         readTime: "8 min read",
         image: "/images/blog/placeholder.jpg",
-        category: "Web Development",
+        category: "Web",
         tags: ["Trends", "Technology", "Innovation"]
     },
     {
@@ -33,7 +34,7 @@ const blogPosts = [
         date: "2023-11-10",
         readTime: "6 min read",
         image: "/images/blog/placeholder.jpg",
-        category: "Digital Marketing",
+        category: "Marketing",
         tags: ["AI", "Marketing", "Technology"]
     },
     {
@@ -44,7 +45,7 @@ const blogPosts = [
         date: "2023-11-05",
         readTime: "10 min read",
         image: "/images/blog/placeholder.jpg",
-        category: "Web Development",
+        category: "Web",
         tags: ["Performance", "Optimization", "SEO"]
     },
     {
@@ -66,12 +67,12 @@ const blogPosts = [
         date: "2023-10-25",
         readTime: "9 min read",
         image: "/images/blog/placeholder.jpg",
-        category: "UX Design",
+        category: "Design",
         tags: ["Motion Design", "UX", "Interaction"]
     }
 ]
 
-const categories = ["All", "Web Development", "Digital Marketing", "SEO", "UX Design"]
+const categories = ["All", "Web", "Marketing", "SEO", "Design"]
 
 const FeaturedPost = ({ post }: { post: { id: number; title: string; excerpt: string; author: string; date: string; readTime: string; image: string; category: string; tags: string[] } }) => (
     <Card className="overflow-hidden">
@@ -157,8 +158,36 @@ const BlogPost = ({ post }: { post: { id: number; title: string; excerpt: string
 export default function BlogHomePage() {
     const [searchTerm, setSearchTerm] = useState('')
     const [activeCategory, setActiveCategory] = useState('All')
+    const [email, setEmail] = useState('')
     const headerRef = useRef(null)
     const headerInView = useInView(headerRef, { once: true })
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        try {
+            const response = await fetch('/api/new-sub', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email }), // Send the email in the request body
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to send subscription data');
+            }
+
+            // If the response is successful, show a success alert
+            alert('Subscription Successful');
+            setEmail(''); // Clear the email input
+        } catch (error) {
+            // Assert that error is of type Error
+            const errorMessage = (error as Error).message || 'An unknown error occurred';
+            console.error('Error:', error);
+            alert('Subscription Failed: ' + errorMessage);
+        }
+    };
 
     const filteredPosts = blogPosts.filter(post =>
         (activeCategory === 'All' || post.category === activeCategory) &&
@@ -168,7 +197,7 @@ export default function BlogHomePage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-            <header ref={headerRef} className="py-20 text-center relative overflow-hidden" style={{ backgroundImage: 'url(/images/social.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <header className="py-20 text-center relative overflow-hidden bg-gradient-to-b from-background to-primary/30">
                 <motion.div
                     className="absolute inset-0 z-0"
                     initial={{ scale: 1.2, opacity: 0 }}
@@ -184,7 +213,7 @@ export default function BlogHomePage() {
                         animate={headerInView ? { y: 0, opacity: 1 } : {}}
                         transition={{ duration: 0.5 }}
                     >
-                        DigitalCraft Insights
+                        Fundi wa Mtandao Insights.
                     </motion.h1>
                     <motion.p
                         className="text-xl text-gray-800 font-semibold max-w-2xl mx-auto mb-8"
@@ -224,7 +253,7 @@ export default function BlogHomePage() {
                     <div className="flex flex-col items-start mb-8">
                         <h2 className="text-3xl font-bold">Latest Articles</h2>
                         <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
-                            <TabsList className="flex flex-wrap">
+                            <TabsList className="flex flex-wrap bg-[#175379] text-white">
                                 {categories.map((category) => (
                                     <TabsTrigger key={category} value={category} className="flex-1">
                                         {category}
@@ -247,24 +276,32 @@ export default function BlogHomePage() {
                     </div>
                 </section>
 
-                <section className="mt-16">
-                    <Card className="bg-primary text-primary-foreground">
+                <section className="mt-16 flex justify-center">
+                    <Card className="bg-primary/45 justify-center text-primary-foreground w-full">
                         <CardHeader>
-                            <CardTitle className="text-2xl">Stay Updated with DigitalCraft</CardTitle>
+                            <CardTitle className="text-2xl">Stay Updated with Fundi wa Mtandao</CardTitle>
                             <CardDescription className="text-primary-foreground/80">
                                 Subscribe to our newsletter for the latest insights and trends in web development and digital marketing.
                             </CardDescription>
                         </CardHeader>
                         <CardContent>
-                            <form className="flex space-x-2">
-                                <Input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    className="bg-primary-foreground text-primary"
-                                />
-                                <Button type="submit" variant="secondary">
-                                    Subscribe
-                                </Button>
+                            <form onSubmit={handleSubmit} className="space-y-2">
+                                <Label htmlFor="email" className="sr-only">Email</Label>
+                                <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+                                    <Input
+                                        type="email"
+                                        id="email"
+                                        placeholder="Enter your email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        required
+                                        className="w-full sm:w-auto"
+                                    />
+                                    <Button type="submit" className="w-full sm:w-auto">
+                                        Subscribe
+                                        <ArrowRight className="ml-2 h-4 w-4" />
+                                    </Button>
+                                </div>
                             </form>
                         </CardContent>
                     </Card>

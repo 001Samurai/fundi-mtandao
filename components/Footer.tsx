@@ -91,7 +91,7 @@ export default function SophisticatedFooter() {
     };
 
     return (
-        <footer className="bg-gradient-to-b from-background to-primary/20 pt-16 pb-8 border-t-2 border-border">
+        <footer className="bg-gradient-to-b from-primary/30 to-background/90 pt-16 pb-8 border-t-2 border-border">
             <div className="container mx-auto px-4">
                 <div className="grid grid-cols-1 gap-8 mb-12">
                     <div className="md:col-span-full lg:col-span-2 px-2 flex flex-col items-center">
@@ -132,7 +132,7 @@ export default function SophisticatedFooter() {
                             </div>
                         </form>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 lg:px-3 gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 lg:px-3 gap-8">
                         {footerLinks.map((column, index) => (
                             <div key={index}>
                                 <h3 className="font-semibold mb-4">{column.title}</h3>

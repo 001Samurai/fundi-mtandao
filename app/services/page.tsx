@@ -23,7 +23,7 @@ export default function ServicesPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-            <header ref={headerRef} className="py-20 text-center relative overflow-hidden" style={{ backgroundImage: 'url(/images/social.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+            <header ref={headerRef} className="py-20 text-center relative overflow-hidden" style={{ backgroundImage: 'url(/images/social.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
                 <motion.div
                     className="absolute inset-0 z-0"
                     initial={{ scale: 1.2, opacity: 0 }}
@@ -86,7 +86,7 @@ export default function ServicesPage() {
                             >
                                 <Card className="h-full flex flex-col">
                                     <CardHeader>
-                                        <ServiceIcon className="h-10 w-10 text-primary mb-2" />
+                                        <ServiceIcon className="h-10 w-10 text-[#e47a33] mb-2" />
                                         <CardTitle>{service.title}</CardTitle>
                                         <CardDescription>{service.description}</CardDescription>
                                     </CardHeader>

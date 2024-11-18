@@ -17,22 +17,45 @@ export default function ContactPage() {
     const formRef = useRef(null)
     const inView = useInView(formRef, { once: true })
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        // Handle form submission logic here
-        setFormSubmitted(true)
-    }
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const formJson: Record<string, string | boolean> = {};
+
+        formData.forEach((value, key) => {
+            formJson[key] = key === 'newsletter' ? value === 'on' : value.toString();
+        });
+
+        try {
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formJson),
+            });
+
+            if (response.ok) {
+                setFormSubmitted(true);
+                window.location.reload();
+            } else {
+                console.error('Failed to submit form');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    };
 
     const contactInfo = [
-        { icon: Mail, label: 'Email', value: 'david@digitalcraft.com' },
-        { icon: Phone, label: 'Phone', value: '+254 123 456 789' },
+        { icon: Mail, label: 'Email', value: 'dmachua.freelance@gmail.com' },
+        { icon: Phone, label: 'Phone', value: '+254 707 211 023' },
         { icon: MapPin, label: 'Location', value: 'Mombasa, Kenya' },
-        { icon: Clock, label: 'Business Hours', value: 'Mon-Fri: 9AM - 5PM EAT' },
+        { icon: Clock, label: 'Business Hours', value: 'Mon-SAT: 9AM - 5PM EAT' },
     ]
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-            <header className="py-20 text-center relative overflow-hidden">
+            <header className="py-20 text-center relative overflow-hidden bg-gradient-to-b from-background to-primary/30">
                 <motion.div
                     className="absolute inset-0 z-0"
                     initial={{ scale: 1.2, opacity: 0 }}
@@ -48,7 +71,7 @@ export default function ContactPage() {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.5 }}
                     >
-                        Let's Create Something Amazing Together
+                        Let's Create Something Amazing Together.
                     </motion.h1>
                     <motion.p
                         className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8"
@@ -56,7 +79,7 @@ export default function ContactPage() {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                        Ready to elevate your digital presence? Get in touch with DigitalCraft today and let's bring your vision to life.
+                        Ready to elevate your digital presence? Get in touch with Fundi wa Mtandao today and let's bring your vision to life.
                     </motion.p>
                 </div>
             </header>
@@ -78,19 +101,19 @@ export default function ContactPage() {
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div className="space-y-2">
                                         <Label htmlFor="name">Name</Label>
-                                        <Input id="name" placeholder="Your full name" required />
+                                        <Input id="name" name="name" placeholder="Your full name" className='w-full' required />
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="email">Email</Label>
-                                        <Input id="email" type="email" placeholder="you@example.com" required />
+                                        <Input id="email" name="email" type="email" placeholder="you@example.com" className='w-full' required />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label htmlFor="phone">Phone (optional)</Label>
-                                        <Input id="phone" type="tel" placeholder="Your phone number" />
+                                        <Label htmlFor="phone">Phone</Label>
+                                        <Input id="phone" name="phone" type="tel" placeholder="Your phone number" className='w-full' required />
                                     </div>
                                     <div className="space-y-2">
                                         <Label>Preferred contact method</Label>
-                                        <RadioGroup defaultValue="email">
+                                        <RadioGroup defaultValue="email" name="preferredContact">
                                             <div className="flex items-center space-x-2">
                                                 <RadioGroupItem value="email" id="contact-email" />
                                                 <Label htmlFor="contact-email">Email</Label>
@@ -103,10 +126,10 @@ export default function ContactPage() {
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="message">Message</Label>
-                                        <Textarea id="message" placeholder="Tell us about your project or inquiry" required />
+                                        <Textarea id="message" name="message" placeholder="Tell us about your project or inquiry" className='w-full' required />
                                     </div>
                                     <div className="flex items-center space-x-2">
-                                        <Switch id="newsletter" />
+                                        <Switch id="newsletter" name="newsletter" />
                                         <Label htmlFor="newsletter">Subscribe to our newsletter</Label>
                                     </div>
                                     <Button type="submit" className="w-full">
@@ -147,7 +170,7 @@ export default function ContactPage() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.6 }}
                         >
-                            <h2 className="text-2xl font-bold mb-4">Why Choose DigitalCraft?</h2>
+                            <h2 className="text-2xl font-bold mb-4">Why Choose Fundi wa Mtandao?</h2>
                             <Card>
                                 <CardContent className="p-6">
                                     <ul className="space-y-2">
@@ -178,7 +201,7 @@ export default function ContactPage() {
                 >
                     <h2 className="text-3xl font-bold text-center mb-8">Frequently Asked Questions</h2>
                     <Tabs defaultValue="general" className="max-w-3xl mx-auto">
-                        <TabsList className="grid w-full grid-cols-3">
+                        <TabsList className="grid w-full grid-cols-3 bg-[#175379] text-white">
                             <TabsTrigger value="general">General</TabsTrigger>
                             <TabsTrigger value="services">Services</TabsTrigger>
                             <TabsTrigger value="pricing">Pricing</TabsTrigger>
