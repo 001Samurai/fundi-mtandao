@@ -19,9 +19,6 @@ const DynamicCard = dynamic(() => import('@/components/ui/card').then(mod => mod
     ssr: false
 })
 
-const DynamicForm = dynamic(() => import('@/components/get-started-form'), {
-    loading: () => <p>Loading form...</p>
-})
 
 const steps = [
     { icon: Users, title: 'Discovery Call', description: 'We\'ll discuss your goals and challenges.' },
@@ -125,7 +122,7 @@ export default function GetStartedPage() {
             case 2:
                 return (
                     <div className="space-y-8">
-                        <h2 className="text-2xl font-bold text-center">Your Journey with DigitalCraft</h2>
+                        <h2 className="text-2xl font-bold text-center">Your Journey with Fundi wa Mtandao</h2>
                         <div className="grid gap-6 md:grid-cols-3">
                             {steps.map((step, index) => (
                                 <Card key={index} className="text-center">
@@ -180,7 +177,7 @@ export default function GetStartedPage() {
                         animate={headerInView ? { y: 0, opacity: 1 } : {}}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                        Start your journey with DigitalCraft and transform your online presence.
+                        Start your journey with Fundi wa Mtandao and transform your online presence.
                     </motion.p>
                 </div>
             </header>
@@ -188,7 +185,7 @@ export default function GetStartedPage() {
             <main className="container mx-auto px-4 py-16">
                 <Card className="max-w-3xl mx-auto">
                     <CardHeader>
-                        <CardTitle>Get Started with DigitalCraft</CardTitle>
+                        <CardTitle>Get Started with Fundi wa Mtandao</CardTitle>
                         <CardDescription>Fill out the form below and we'll be in touch to discuss your project.</CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -212,7 +209,7 @@ export default function GetStartedPage() {
                 </Card>
 
                 <section className="mt-20">
-                    <h2 className="text-3xl font-bold text-center mb-8">Why Choose DigitalCraft?</h2>
+                    <h2 className="text-3xl font-bold text-center mb-8">Why Choose Fundi wa Mtandao?</h2>
                     <div className="grid gap-8 md:grid-cols-3">
                         {[
                             { title: 'Expertise', description: '3+ years of experience in web development and digital marketing.' },
