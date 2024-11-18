@@ -12,6 +12,12 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Label } from '@/components/ui/label'
+import dynamic from 'next/dynamic'
+
+// Lazy load non-critical components
+const DynamicTabs = dynamic(() => import('@/components/ui/tabs').then(mod => mod.Tabs), {
+    loading: () => <p>Loading...</p>
+})
 
 // Mock data for blog posts
 const blogPosts = [
@@ -80,8 +86,12 @@ const FeaturedPost = ({ post }: { post: { id: number; title: string; excerpt: st
             <Image
                 src={post.image}
                 alt={post.title}
-                layout="fill"
-                objectFit="cover"
+                width={400}
+                height={300}
+                className="object-cover"
+                priority={false}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
             />
         </div>
         <CardHeader>
@@ -122,8 +132,12 @@ const BlogPost = ({ post }: { post: { id: number; title: string; excerpt: string
             <Image
                 src={post.image}
                 alt={post.title}
-                layout="fill"
-                objectFit="cover"
+                width={400}
+                height={300}
+                className="object-cover"
+                priority={false}
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
             />
         </div>
         <CardHeader>
@@ -252,7 +266,7 @@ export default function BlogHomePage() {
                 <section>
                     <div className="flex flex-col items-start mb-8">
                         <h2 className="text-3xl font-bold">Latest Articles</h2>
-                        <Tabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
+                        <DynamicTabs value={activeCategory} onValueChange={setActiveCategory} className="w-full">
                             <TabsList className="flex flex-wrap bg-[#175379] text-white">
                                 {categories.map((category) => (
                                     <TabsTrigger key={category} value={category} className="flex-1">
@@ -260,7 +274,7 @@ export default function BlogHomePage() {
                                     </TabsTrigger>
                                 ))}
                             </TabsList>
-                        </Tabs>
+                        </DynamicTabs>
                     </div>
                     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                         {filteredPosts.slice(1).map((post, index) => (

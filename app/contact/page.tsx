@@ -58,11 +58,11 @@ export default function ContactPage() {
             <header className="py-20 text-center relative overflow-hidden bg-gradient-to-b from-background to-primary/30">
                 <motion.div
                     className="absolute inset-0 z-0"
-                    initial={{ scale: 1.2, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.1 }}
-                    transition={{ duration: 0.8 }}
+                    initial={false}
+                    animate={{ opacity: 0.1 }}
+                    transition={{ duration: 0.5 }}
                 >
-                    <div className="absolute inset-0 bg-grid-white/10 bg-grid-16 [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]" />
+                    <div className="absolute inset-0 bg-grid-white/10 bg-grid-16" />
                 </motion.div>
                 <div className="container mx-auto px-4 relative z-10">
                     <motion.h1

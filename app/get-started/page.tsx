@@ -13,6 +13,15 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { services } from '@/data/serviceData'
+import dynamic from 'next/dynamic'
+
+const DynamicCard = dynamic(() => import('@/components/ui/card').then(mod => mod.Card), {
+    ssr: false
+})
+
+const DynamicForm = dynamic(() => import('@/components/get-started-form'), {
+    loading: () => <p>Loading form...</p>
+})
 
 const steps = [
     { icon: Users, title: 'Discovery Call', description: 'We\'ll discuss your goals and challenges.' },

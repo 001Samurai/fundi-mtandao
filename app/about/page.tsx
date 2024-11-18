@@ -46,7 +46,7 @@ export default function AboutPage() {
             >
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/social.jpg"
+                        src="/images/social.webp"
                         alt="support-small-biz"
                         fill
                         className="object-cover"
