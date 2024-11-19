@@ -9,12 +9,12 @@ import { Suspense } from 'react';
 
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "/fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "/fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
@@ -62,14 +62,14 @@ export default function RootLayout({
       <head>
         <link
           rel="preload"
-          href="./fonts/GeistVF.woff"
+          href="/fonts/GeistVF.woff"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
         />
         <link
           rel="preload"
-          href="./fonts/GeistMonoVF.woff"
+          href="/fonts/GeistMonoVF.woff"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"

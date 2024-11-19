@@ -217,7 +217,7 @@ const PortfolioItem: React.FC<{ project: Project; index: number }> = ({ project,
                                 alt={project.title}
                                 layout="fill"
                                 objectFit="cover"
-                                className="rounded-lg"
+                                className="rounded-lg w-full h-auto transition-transform duration-300 hover:scale-105"
                             />
                         </div>
                         <div className="space-y-6">

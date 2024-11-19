@@ -14,6 +14,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import Link from "next/link"
+import Image from "next/image"
 
 // Define the Project interface
 interface Project {
@@ -98,7 +99,7 @@ const PortfolioItem: React.FC<{ project: Project; isEven: boolean }> = ({ projec
             <div className="w-full md:w-1/2">
                 <Card className="overflow-hidden">
                     <CardContent className="p-0">
-                        <img src={project.image} alt={project.title} className="w-full h-auto transition-transform duration-300 hover:scale-105" />
+                        <Image src={project.image} alt={project.title} layout="responsive" width={800} height={600} className="transition-transform duration-300 hover:scale-105" />
                     </CardContent>
                 </Card>
             </div>
@@ -114,7 +115,7 @@ const PortfolioItem: React.FC<{ project: Project; isEven: boolean }> = ({ projec
                 </div>
                 <div className="flex gap-4">
                     <Button asChild>
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className='hover:text-white'>
                             View Live <ExternalLink className="ml-2 h-4 w-4" />
                         </a>
                     </Button>
