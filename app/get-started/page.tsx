@@ -152,8 +152,8 @@ export default function GetStartedPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-            <header ref={headerRef} className="py-20 text-center relative overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-b from-background/80 to-secondary/30">
+            <header ref={headerRef} className="py-20 text-center relative overflow-hidden bg-gradient-to-b from-background/90 to-primary/30">
                 <motion.div
                     className="absolute inset-0 z-0"
                     initial={{ scale: 1.2, opacity: 0 }}
@@ -172,7 +172,7 @@ export default function GetStartedPage() {
                         Let's Craft Your Digital Success
                     </motion.h1>
                     <motion.p
-                        className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8"
+                        className="text-xl max-w-2xl mx-auto mb-8"
                         initial={{ y: 50, opacity: 0 }}
                         animate={headerInView ? { y: 0, opacity: 1 } : {}}
                         transition={{ duration: 0.5, delay: 0.2 }}
@@ -191,13 +191,13 @@ export default function GetStartedPage() {
                     <CardContent>
                         <Tabs value={currentStep.toString()} className="w-full">
                             <TabsList className="grid w-full grid-cols-3">
-                                <TabsTrigger value="0" disabled={currentStep !== 0}>
+                                <TabsTrigger value="0" disabled={currentStep !== 0} className="text-xs">
                                     <Badge variant={currentStep >= 0 ? "default" : "outline"}>1</Badge> Project Details
                                 </TabsTrigger>
-                                <TabsTrigger value="1" disabled={currentStep !== 1}>
+                                <TabsTrigger value="1" disabled={currentStep !== 1} className="text-xs">
                                     <Badge variant={currentStep >= 1 ? "default" : "outline"}>2</Badge> Confirmation
                                 </TabsTrigger>
-                                <TabsTrigger value="2" disabled={currentStep !== 2}>
+                                <TabsTrigger value="2" disabled={currentStep !== 2} className="text-xs">
                                     <Badge variant={currentStep >= 2 ? "default" : "outline"}>3</Badge> Next Steps
                                 </TabsTrigger>
                             </TabsList>

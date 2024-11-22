@@ -86,7 +86,19 @@ export default function ServicesPage() {
                             >
                                 <Card className="h-full flex flex-col">
                                     <CardHeader>
-                                        <ServiceIcon className="h-10 w-10 text-[#e47a33] mb-2" />
+                                        <div className="flex justify-between items-start">
+                                            <ServiceIcon className="h-10 w-10 text-[#e47a33] mb-2" />
+                                            <Badge
+                                                variant="outline"
+                                                className={`
+                                                    ${service.demand === 'moderate' && 'bg-green-100 text-green-800 border-green-200 hover:bg-green-100'}
+                                                    ${service.demand === 'high' && 'bg-orange-100 text-orange-800 border-orange-200 hover:bg-orange-100'}
+                                                    ${service.demand === 'very high' && 'bg-red-100 text-red-800 border-red-200 hover:bg-red-100'}
+                                                `}
+                                            >
+                                                {service.demand.charAt(0).toUpperCase() + service.demand.slice(1)} Demand
+                                            </Badge>
+                                        </div>
                                         <CardTitle>{service.title}</CardTitle>
                                         <CardDescription>{service.description}</CardDescription>
                                     </CardHeader>

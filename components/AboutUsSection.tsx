@@ -42,7 +42,7 @@ export default function AboutUsSection() {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src="/images/about-us-image.jpg?height=400&width=600"
+              src="/images/about-3.webp?height=400&width=600"
               alt="DigitalCraft Agency Team"
               width={600}
               height={400}

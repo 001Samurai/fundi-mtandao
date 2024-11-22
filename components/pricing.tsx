@@ -1,106 +1,165 @@
-import Balancer from "react-wrap-balancer";
-import { Article, Container, Section } from "@/components/ui/craft";
-import { ReactNode } from "react";
-import { Button } from "@/components/ui/button";
-import { CircleCheck } from 'lucide-react';
-import { Badge } from "@/components/ui/badge";
-import Link from "next/link";
+'use client'
 
-interface PricingCardProps {
-    title: "Basic" | "Standard" | "Entreprise";
-    price: string;
-    description?: string;
-    features: string[];
-    cta: string;
-    href: string;
-}
+import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight, Check, HelpCircle } from 'lucide-react'
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import Link from 'next/link'
 
-// Dummy pricing data
-const pricingData: PricingCardProps[] = [
+const plans = [
     {
-        title: "Basic",
-        price: "KES 15,000/Month",
-        description: "Perfect for small businesses and professional individuals.",
-        features: ["3 Pages", "Basic SEO", "Email Support", "Responsive Design"],
-        cta: "Choose Basic",
-        href: "/package-selection?plan=basic",
-    },
-    {
-        title: "Standard",
-        price: "KES 25,000/month",
-        description: "Best for growing businesses with more needs.",
+        name: 'Starter',
+        description: 'For small businesses & startups',
+        price: 'KES 25,000 - 50,000',
         features: [
-            "10 Pages",
-            "Advanced SEO",
-            "CMS Integration",
-            "24/7 Chat Support",
+            'Single-page website',
+            'Responsive design',
+            'Basic CMS integration',
+            'Professional logo design',
+            'Basic social media setup (1-2 platforms)',
         ],
-        cta: "Choose Standard",
-        href: "/package-selection?plan=standard",
+        addons: [
+            { name: 'Basic SEO services', price: 'KES 5,000 - 10,000' },
+            { name: 'Analytics setup', price: 'KES 3,000' },
+        ],
     },
     {
-        title: "Entreprise",
-        price: "KES 50,000/Month",
-        description: "Ideal for larger businesses that need scalability.",
+        name: 'Growth',
+        description: 'For scaling businesses',
+        price: 'KES 60,000 - 120,000',
         features: [
-            "Unlimited Pages",
-            "E-commerce Integration",
-            "Priority Support",
-            "Custom API Integration",
+            'Multi-page website with CMS',
+            'SEO-friendly structure',
+            'On-page optimization',
+            'Social media management (2 platforms)',
+            '3 blog posts or articles',
+            'Mpesa integration',
         ],
-        cta: "Choose Entreprise",
-        href: "/package-selection?plan=pro",
+        addons: [
+            { name: 'PPC Advertising Campaign setup', price: 'Starting at KES 10,000' },
+            { name: 'Advanced analytics and reporting', price: 'KES 8,000' },
+        ],
     },
-];
+    {
+        name: 'Premium',
+        description: 'Comprehensive digital presence',
+        price: 'KES 150,000 - 250,000',
+        features: [
+            'Custom functionality & advanced CMS',
+            'Fully functional online store',
+            'Advanced SEO strategy',
+            'Social media management (3 platforms)',
+            '5-8 pieces of content',
+            'Detailed analytics & reporting',
+        ],
+        addons: [
+            { name: 'Mobile App Development', price: 'KES 80,000+' },
+            { name: 'DevOps and hosting setup', price: 'KES 15,000+' },
+        ],
+    },
+    {
+        name: 'Enterprise',
+        description: 'Custom solutions for large businesses',
+        price: 'KES 300,000+',
+        features: [
+            'Fully customizable solutions',
+            'Advanced mobile app development',
+            'Enterprise-level e-commerce',
+            'Dedicated cybersecurity services',
+            'Long-term digital marketing campaigns',
+        ],
+        addons: [],
+    },
+]
 
-const Pricing = () => {
+export default function PricingCards() {
+    const [hoveredPlan, setHoveredPlan] = useState<string | null>(null)
+
     return (
-        <Section>
-            <Container className="flex flex-col items-center gap-4 text-center">
-                <h1 className="text-4xl font-bold text-center mb-12 !my-0">Pricing</h1>
-                <p className="text-lg opacity-70 md:text-2xl">
-                    <Balancer>Select the plan that best suits your needs.</Balancer>
+        <div className="py-24 sm:py-32">
+            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+                <div className="mx-auto max-w-4xl text-center">
+                    <h2 className="font-semibold text-3xl">Pricing</h2>
+                    <p className="mt-2 text-xl font-bold tracking-tight sm:text-5xl">
+                        Choose the right plan for your business
+                    </p>
+                </div>
+                <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-muted-foreground">
+                    From startups to enterprises, we have a plan that fits your needs. All plans include our core features to help you grow your online presence.
                 </p>
-
-                <div className="not-prose mt-4 grid grid-cols-1 gap-6 min-[850px]:grid-cols-3">
-                    {pricingData.map((plan, index) => (
-                        <PricingCard plan={plan} key={index} />
+                <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    {plans.map((plan) => (
+                        <motion.div
+                            key={plan.name}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            whileHover={{ scale: 1.05 }}
+                            onHoverStart={() => setHoveredPlan(plan.name)}
+                            onHoverEnd={() => setHoveredPlan(null)}
+                        >
+                            <Card className={`flex flex-col justify-between h-full ${hoveredPlan === plan.name ? 'shadow-lg' : ''}`}>
+                                <CardHeader>
+                                    <CardTitle>{plan.name}</CardTitle>
+                                    <CardDescription>{plan.description}</CardDescription>
+                                </CardHeader>
+                                <CardContent>
+                                    <div className="mt-6 flex items-baseline justify-center gap-x-2">
+                                        <span className="text-xl font-bold tracking-tight">{plan.price}</span>
+                                    </div>
+                                    <ul role="list" className="mt-8 space-y-3 text-sm leading-6">
+                                        {plan.features.map((feature) => (
+                                            <li key={feature} className="flex gap-x-3">
+                                                <Check className="h-6 w-5 flex-none text-primary" aria-hidden="true" />
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    {plan.addons.length > 0 && (
+                                        <div className="mt-6">
+                                            <h4 className="text-sm font-semibold mb-2">Optional Add-ons:</h4>
+                                            <ul className="space-y-2 text-sm">
+                                                {plan.addons.map((addon) => (
+                                                    <li key={addon.name} className="flex justify-between">
+                                                        <span>{addon.name}</span>
+                                                        <span className="text-muted-foreground">{addon.price}</span>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+                                </CardContent>
+                                <CardFooter className="mt-auto">
+                                    <Button asChild className="w-full">
+                                        <Link href="/get-started">
+                                            Get started
+                                            <ArrowRight className="ml-2 h-4 w-4" />
+                                        </Link>
+                                    </Button>
+                                </CardFooter>
+                            </Card>
+                        </motion.div>
                     ))}
                 </div>
-            </Container>
-        </Section>
-    );
-};
-
-const PricingCard = ({ plan }: { plan: PricingCardProps }) => {
-    return (
-        <div className="flex flex-col rounded-lg shadow-md border p-6">
-            <div className="text-center">
-                <Badge className="text-lg bg-[#175391]">{plan.title}</Badge>
-                <h4 className="mb-2 mt-4 text-2xl text-primary">{plan.price}</h4>
-                <p className="text-base opacity-70">{plan.description}</p>
             </div>
-
-            <div className="my-4 border-t"></div>
-
-            <ul className="space-y-3 text-left">
-                {plan.features.map((feature, i) => (
-                    <li key={i} className="flex items-center text-sm opacity-70">
-                        <CircleCheck className="mr-2 h-4 w-4" />
-                        {feature}
-                    </li>
-                ))}
-            </ul>
-
-            <div className="mt-auto pt-6">
-                <Link href={plan.href}>
-                    <Button size={"sm"} className="w-full">
-                        {plan.cta}
-                    </Button>
-                </Link>
+            <div className="mt-16 text-center">
+                <TooltipProvider>
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button variant="outline">
+                                Need help choosing?
+                                <HelpCircle className="ml-2 h-4 w-4" />
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            <p>Contact us for a personalized recommendation</p>
+                        </TooltipContent>
+                    </Tooltip>
+                </TooltipProvider>
             </div>
         </div>
-    );
-};
-
-export default Pricing;
+    )
+}

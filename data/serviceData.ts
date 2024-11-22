@@ -1,4 +1,8 @@
-import { Code, Megaphone, BarChart, Zap, Layers, Search, ShoppingCart, PenTool, Users, Smartphone } from 'lucide-react'
+import {
+    Code, Megaphone, BarChart, Zap, Layers, Search, ShoppingCart,
+    PenTool, Users, Smartphone, Cloud, Shield, Cpu, Lock, Globe,
+    CreditCard, Globe2, Paintbrush, Monitor, Database, TerminalSquare
+} from 'lucide-react';
 
 export interface Service {
     icon: React.ElementType;
@@ -7,6 +11,9 @@ export interface Service {
     details: string[];
     category: string;
     slug: string;
+    demand: 'very high' | 'high' | 'moderate';
+    priceRange: string;
+    whatIs: string;
 }
 
 export const services: Service[] = [
@@ -21,7 +28,10 @@ export const services: Service[] = [
             'Content Management Systems (CMS)',
         ],
         category: 'web',
-        slug: 'web-development'
+        slug: 'web-development',
+        demand: 'very high',
+        priceRange: 'KES 75,000-600,000+',
+        whatIs: 'Web development involves building and maintaining websites with modern technologies. It ensures businesses have a professional, functional, and user-friendly online presence to meet their goals.',
     },
     {
         icon: Megaphone,
@@ -34,7 +44,40 @@ export const services: Service[] = [
             'Content Marketing',
         ],
         category: 'marketing',
-        slug: 'digital-marketing'
+        slug: 'digital-marketing',
+        demand: 'high',
+        priceRange: 'KES 40,000-300,000/month',
+        whatIs: 'Digital marketing uses online strategies like SEO, PPC, and social media to enhance brand visibility, attract customers, and drive sales. It\'s essential for growing a business in today\'s digital age.',
+    },
+    {
+        icon: CreditCard,
+        title: 'Mpesa Integration',
+        description: 'Seamless Mpesa payment gateway integration for businesses.',
+        details: [
+            'API setup and configuration',
+            'Real-time transaction tracking',
+            'Automated payment processing',
+        ],
+        category: 'payment',
+        slug: 'mpesa-integration',
+        demand: 'very high',
+        priceRange: 'KES 30,000-150,000',
+        whatIs: 'Mpesa integration allows businesses to accept mobile payments securely and efficiently. It\'s crucial in Kenya, where mobile money is the preferred payment method.',
+    },
+    {
+        icon: Paintbrush,
+        title: 'Logo Design',
+        description: 'Creative and impactful logo designs to represent your brand.',
+        details: [
+            'Custom logo creation',
+            'Brand identity development',
+            'Multiple revisions and concepts',
+        ],
+        category: 'design',
+        slug: 'logo-design',
+        demand: 'high',
+        priceRange: 'KES 10,000-50,000',
+        whatIs: 'A well-designed logo represents your brand\'s identity and values, making a lasting impression on your customers and enhancing brand recognition.',
     },
     {
         icon: BarChart,
@@ -47,7 +90,10 @@ export const services: Service[] = [
             'Regular performance reports',
         ],
         category: 'analytics',
-        slug: 'analytics-and-reporting'
+        slug: 'analytics-and-reporting',
+        demand: 'high',
+        priceRange: 'KES 20,000-150,000',
+        whatIs: 'Analytics services collect and interpret data to help businesses make informed decisions. They improve marketing strategies, website performance, and user engagement.',
     },
     {
         icon: Zap,
@@ -60,7 +106,26 @@ export const services: Service[] = [
             'Image and asset optimization',
         ],
         category: 'web',
-        slug: 'performance-optimization'
+        slug: 'performance-optimization',
+        demand: 'high',
+        priceRange: 'KES 50,000-200,000',
+        whatIs: 'Performance optimization ensures that websites load quickly and function smoothly, improving user experience and search engine rankings.',
+    },
+    {
+        icon: Globe2,
+        title: 'Domain Registration & Hosting',
+        description: 'Affordable and secure domain registration and web hosting services.',
+        details: [
+            'Domain name acquisition',
+            'Shared and dedicated hosting',
+            'SSL certificates',
+            'Technical support',
+        ],
+        category: 'web',
+        slug: 'domain-registration-hosting',
+        demand: 'high',
+        priceRange: 'KES 3,000-25,000/year',
+        whatIs: 'Domain registration secures your website\'s online address, while hosting provides the space and tools needed to keep your site accessible worldwide.',
     },
     {
         icon: Layers,
@@ -73,7 +138,10 @@ export const services: Service[] = [
             'Usability testing',
         ],
         category: 'design',
-        slug: 'ui-ux-design'
+        slug: 'ui-ux-design',
+        demand: 'very high',
+        priceRange: 'KES 50,000-300,000',
+        whatIs: 'UI/UX design focuses on creating user-friendly and aesthetically pleasing digital interfaces. It ensures a seamless and engaging experience for users.',
     },
     {
         icon: Search,
@@ -86,84 +154,155 @@ export const services: Service[] = [
             'Local SEO optimization',
         ],
         category: 'marketing',
-        slug: 'seo-services'
+        slug: 'seo-services',
+        demand: 'very high',
+        priceRange: 'KES 40,000-200,000',
+        whatIs: 'Search Engine Optimization (SEO) improves a website\'s visibility on search engines, driving organic traffic and increasing brand credibility.',
     },
     {
-        icon: ShoppingCart,
-        title: 'E-commerce Solutions',
-        description: 'Build and optimize online stores that drive sales and customer satisfaction.',
+        icon: Shield,
+        title: 'Cybersecurity Services',
+        description: 'Protect your business from cyber threats with our tailored security solutions.',
         details: [
-            'Custom e-commerce website development',
-            'Shopping cart and checkout optimization',
-            'Payment gateway integration',
-            'Inventory management systems',
+            'Vulnerability assessments',
+            'Network and application security',
+            'Data encryption and protection',
+            'Incident response and recovery',
         ],
-        category: 'web',
-        slug: 'e-commerce-solutions'
+        category: 'security',
+        slug: 'cybersecurity-services',
+        demand: 'high',
+        priceRange: 'KES 80,000-500,000',
+        whatIs: 'Cybersecurity services safeguard your digital assets against threats, ensuring business continuity and protecting customer trust.',
     },
     {
-        icon: PenTool,
-        title: 'Content Creation',
-        description: 'Develop engaging and SEO-friendly content that resonates with your audience.',
+        icon: Database,
+        title: 'Database Management',
+        description: 'Efficient database solutions to store, retrieve, and manage your data seamlessly.',
         details: [
-            'Blog post and article writing',
-            'Copywriting for websites and ads',
-            'Infographic and visual content design',
-            'Video script writing',
+            'Database design and setup',
+            'Data migration and backup',
+            'Performance tuning',
+            'Ongoing maintenance',
         ],
-        category: 'marketing',
-        slug: 'content-creation'
+        category: 'data',
+        slug: 'database-management',
+        demand: 'moderate',
+        priceRange: 'KES 60,000-300,000',
+        whatIs: 'Database management ensures your data is organized, secure, and easily accessible, powering your business operations efficiently.',
     },
     {
-        icon: Users,
-        title: 'Social Media Management',
-        description: 'Build and engage your community across various social media platforms.',
+        icon: TerminalSquare,
+        title: 'DevOps Services',
+        description: 'Streamlined software delivery through efficient DevOps practices.',
         details: [
-            'Social media strategy development',
-            'Content calendar creation and management',
-            'Community engagement and moderation',
-            'Social media advertising campaigns',
+            'Continuous Integration and Deployment (CI/CD)',
+            'Infrastructure automation',
+            'Monitoring and logging setup',
+            'Cloud and containerization solutions',
         ],
-        category: 'marketing',
-        slug: 'social-media-management'
-    },
-    {
-        icon: Smartphone,
-        title: 'Mobile App Design',
-        description: 'Create stunning and user-friendly mobile app interfaces for iOS and Android.',
-        details: [
-            'User-centered design approach',
-            'Cross-platform UI/UX design',
-            'Prototyping and user testing',
-            'App icon and branding design',
-        ],
-        category: 'mobile',
-        slug: 'mobile-app-design'
+        category: 'devops',
+        slug: 'devops-services',
+        demand: 'high',
+        priceRange: 'KES 100,000-600,000',
+        whatIs: 'DevOps practices align development and IT operations to improve software delivery speed and reliability.',
     },
     {
         icon: Smartphone,
         title: 'Mobile App Development',
-        description: 'Build powerful and scalable mobile applications for various platforms.',
+        description: 'Custom mobile applications for Android and iOS platforms.',
         details: [
-            'Native iOS and Android development',
-            'Cross-platform development (React Native, Flutter)',
-            'App performance optimization',
-            'Integration with backend services and APIs',
+            'Cross-platform app development',
+            'User-friendly interface design',
+            'App store deployment',
+            'Ongoing support and updates',
         ],
         category: 'mobile',
-        slug: 'mobile-app-development'
+        slug: 'mobile-app-development',
+        demand: 'very high',
+        priceRange: 'KES 100,000-800,000+',
+        whatIs: 'Mobile app development creates tailored applications to enhance user experience and business engagement on mobile platforms.',
     },
     {
-        icon: Code,
-        title: 'Web Management',
-        description: 'Comprehensive web management services to keep your site running smoothly.',
+        icon: Users,
+        title: 'Social Media Management',
+        description: 'End-to-end social media solutions to grow and engage your audience.',
         details: [
-            'Regular updates and maintenance',
-            'Security monitoring and patches',
-            'Backup and recovery solutions',
-            'Performance monitoring and optimization',
+            'Content creation and scheduling',
+            'Community engagement',
+            'Ad campaign management',
+            'Analytics and reporting',
+        ],
+        category: 'marketing',
+        slug: 'social-media-management',
+        demand: 'high',
+        priceRange: 'KES 30,000-200,000/month',
+        whatIs: 'Social media management helps businesses build a strong online presence, engage with their audience, and drive traffic or sales through strategic content and advertising.',
+    },
+    {
+        icon: Lock,
+        title: 'IT Support Services',
+        description: 'Reliable IT solutions to keep your systems running smoothly.',
+        details: [
+            'System setup and maintenance',
+            'Troubleshooting and repairs',
+            'Software updates and upgrades',
+            'Remote and onsite support',
+        ],
+        category: 'it-support',
+        slug: 'it-support-services',
+        demand: 'moderate',
+        priceRange: 'KES 20,000-150,000',
+        whatIs: 'IT support services ensure your technology infrastructure runs efficiently, reducing downtime and enhancing productivity.',
+    },
+    {
+        icon: Globe,
+        title: 'Web Hosting Services',
+        description: 'Reliable hosting solutions for fast and secure websites.',
+        details: [
+            'Shared and dedicated hosting',
+            'Cloud hosting options',
+            '99.9% uptime guarantee',
+            '24/7 technical support',
         ],
         category: 'web',
-        slug: 'web-management'
+        slug: 'web-hosting-services',
+        demand: 'high',
+        priceRange: 'KES 5,000-50,000/year',
+        whatIs: 'Web hosting provides the technology and services needed for your website to be accessible on the internet, ensuring speed and reliability.',
     },
-]
+    {
+        icon: Monitor,
+        title: 'eCommerce Solutions',
+        description: 'Comprehensive services to launch and manage your online store.',
+        details: [
+            'Custom eCommerce website design',
+            'Payment gateway integrations',
+            'Product management systems',
+            'SEO and marketing integration',
+        ],
+        category: 'ecommerce',
+        slug: 'ecommerce-solutions',
+        demand: 'very high',
+        priceRange: 'KES 150,000-1,000,000+',
+        whatIs: 'eCommerce solutions enable businesses to sell products or services online, providing a seamless shopping experience for customers.',
+    },
+    {
+        icon: PenTool,
+        title: 'Content Writing Services',
+        description: 'Engaging and SEO-optimized content tailored to your audience.',
+        details: [
+            'Blog writing',
+            'Website copywriting',
+            'Product descriptions',
+            'Technical writing',
+        ],
+        category: 'content',
+        slug: 'content-writing-services',
+        demand: 'high',
+        priceRange: 'KES 5,000-30,000 per piece',
+        whatIs: 'Content writing involves creating written material that informs, engages, and converts your audience, boosting your brand\'s visibility and trust.',
+    }
+];
+
+

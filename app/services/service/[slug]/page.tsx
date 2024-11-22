@@ -51,11 +51,31 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                     >
                         {service.description}
                     </motion.p>
+                    <Badge
+                        variant="outline"
+                        className={`
+                                    ${service.demand === 'moderate' && 'bg-green-100 text-green-800 border-green-200 hover:bg-green-100'}
+                                    ${service.demand === 'high' && 'bg-orange-100 text-orange-800 border-orange-200 hover:bg-orange-100'}
+                                    ${service.demand === 'very high' && 'bg-red-100 text-red-800 border-red-200 hover:bg-red-100'}
+                            `}
+                    >
+                        {service.demand.charAt(0).toUpperCase() + service.demand.slice(1)} Demand
+                    </Badge>
                 </div>
             </header>
 
             <main className="container mx-auto px-4 py-16">
                 <div className="grid gap-8 md:grid-cols-2">
+
+                    <Card>
+                        <CardHeader>
+                            <CardTitle>What is {service.title}?</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p>{service.whatIs}</p>
+                        </CardContent>
+                    </Card>
+
                     <Card>
                         <CardHeader>
                             <CardTitle className="flex items-center">
@@ -77,7 +97,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                             <CardTitle>Our Approach</CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <p className="mb-4">At DigitalCraft, we take a client-centric approach to {service.title.toLowerCase()}. Our process includes:</p>
+                            <p className="mb-4">At Fundi wa Mtandao, we take a client-centric approach to {service.title.toLowerCase()}. Our process includes:</p>
                             <ol className="list-decimal list-inside space-y-2">
                                 <li>In-depth consultation to understand your unique needs</li>
                                 <li>Customized strategy development</li>
@@ -90,26 +110,11 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
 
                     <Card>
                         <CardHeader>
-                            <CardTitle>Measuring Success</CardTitle>
-                        </CardHeader>
-                        <CardContent>
-                            <p className="mb-4">We believe in measurable results. For our {service.title.toLowerCase()} service, we track:</p>
-                            <ul className="list-disc list-inside space-y-2">
-                                <li>Key Performance Indicators (KPIs) specific to your goals</li>
-                                <li>Return on Investment (ROI)</li>
-                                <li>User engagement and satisfaction metrics</li>
-                                <li>Conversion rates and goal completions</li>
-                            </ul>
-                        </CardContent>
-                    </Card>
-
-                    <Card>
-                        <CardHeader>
                             <CardTitle>Pricing</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <p className="mb-4">Our pricing for {service.title.toLowerCase()} is tailored to your specific needs and project scope. Generally, our services range from:</p>
-                            <p className="text-2xl font-bold text-primary">KES 50,000 - KES 500,000+</p>
+                            <p className="text-2xl font-bold text-primary">{service.priceRange}</p>
                             <p className="mt-2 text-sm text-muted-foreground">Factors affecting the price include project complexity, timeline, and ongoing support needs.</p>
                         </CardContent>
                         <CardFooter className="flex justify-between">
@@ -130,7 +135,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
                 </div>
 
                 <section className="mt-20">
-                    <h2 className="text-3xl font-bold text-center mb-8">Why Choose DigitalCraft for {service.title}?</h2>
+                    <h2 className="text-3xl font-bold text-center mb-8">Why Choose Fundi wa Mtandao for {service.title}?</h2>
                     <div className="grid gap-8 md:grid-cols-3">
                         {[
                             { title: 'Expertise', description: `Our team has years of experience in ${service.title.toLowerCase()}, ensuring top-notch results.` },
