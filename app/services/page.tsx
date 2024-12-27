@@ -125,7 +125,7 @@ export default function ServicesPage() {
 
 
                 <section className="mt-20">
-                    <h2 className="text-3xl font-bold text-center mb-8">Why Choose DigitalCraft?</h2>
+                    <h2 className="text-3xl font-bold text-center mb-8">Why Choose Fundi wa Mtandao?</h2>
                     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                         {[
                             { title: 'Expertise', description: '3+ years of experience in web development and digital marketing.' },
