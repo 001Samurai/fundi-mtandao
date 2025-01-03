@@ -126,10 +126,10 @@ export default function HeroSection() {
 
                     {/* Text Content */}
                     <div className="w-full lg:w-1/2 order-2 lg:order-1 flex flex-col items-center text-center lg:items-start lg:text-left">
-                        <h1 className="text-4xl sm:text-4xl md:text-4xl lg:text-5xl font-bold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#15158c] to-[#ee333c] whitespace-nowrap overflow-hidden text-ellipsis w-full">
+                        <h1 className="text-4xl font-bold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#15158c] to-[#ee333c] whitespace-nowrap overflow-hidden text-ellipsis w-full">
                             INNOVATE. CREATE. SUCCEED.
                         </h1>
-                        <p className="mt-4 mb-8 max-w-[600px] text-gray-700 md:text-xl sm:text-2xl dark:text-gray-400">
+                        <p className="mt-4 mb-8 max-w-[600px] text-gray-700 text-xl dark:text-gray-400">
                             Transform your business with expert digital solutions from Fundi wa Mtandao. Whether you need a stunning website, seamless e-commerce platform, or impactful digital marketing campaigns, we’re here to help your brand stand out. We also specialize in custom software solutions, Mpesa integration, and IT support to keep your operations running smoothly. Partner with us to grow your business and achieve digital dominance.
                         </p>
 
