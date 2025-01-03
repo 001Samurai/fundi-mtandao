@@ -18,18 +18,35 @@ const carouselItems = [
     title: 'Web Development',
     description: 'Create stunning, responsive websites',
     cta: 'Explore Web Dev',
+      link: '/services/service/web-development'
+  },
+    {
+    image: '/images/digmark.jpg?height=400&width=600',
+    title: 'Digital Marketing',
+    description: 'Run strategic, impactful campaigns to improve your online presence.',
+    cta: 'Explore Web Dev',
+      link: '/services/service/digital-marketing'
   },
   {
-    image: '/images/social.jpg?height=400&width=600',
+    image: '/images/mobileapp.jpg?height=400&width=600',
     title: 'Mobile Apps',
     description: 'Build powerful mobile applications',
     cta: 'Discover Mobile',
+      link: '/services/service/mobile-app-development'
   },
   {
     image: '/images/social.jpg?height=400&width=600',
     title: 'UI/UX Design',
     description: 'Design intuitive user interfaces',
     cta: 'Learn UI/UX',
+      link: '/services/service/ui-ux-design'
+  },
+    {
+    image: '/images/ecommerce.jpg?height=400&width=600',
+    title: 'Ecommerce',
+    description: 'Create stunning, responsive ecommerce apps',
+    cta: 'Ecommerce Dev',
+      link: '/services/service/ecommerce'
   },
 ]
 
@@ -93,9 +110,11 @@ export default function HeroSection() {
                                                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-black/50 text-white">
                                                     <h3 className="text-xl text-white font-semibold mb-2">{item.title}</h3>
                                                     <p className="text-sm mb-4">{item.description}</p>
+                                                    <Link href={item.link}>
                                                     <Button variant="secondary" size="sm">
                                                         {item.cta}
                                                     </Button>
+                                                    </Link> 
                                                 </div>
                                             </div>
                                         </SwiperSlide>
@@ -126,7 +145,7 @@ export default function HeroSection() {
                             >
                                 <Link href="/get-started">
                                     <Button 
-                                        className={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-all duration-300 ease-in-out ${
+                                        className={`inline-flex items-center justify-center rounded-2 px-6 py-3 text-sm font-medium transition-all duration-300 ease-in-out ${
                                             isHoveredGet ? 'bg-[#e47a33] text-white' : 'bg-[#175379] text-white'
                                         }`}
                                         onMouseEnter={() => setIsHoveredGet(true)}
@@ -144,7 +163,7 @@ export default function HeroSection() {
                                 <Link href="/services">
                                     <Button
                                         variant="outline"
-                                        className={`inline-flex items-center justify-center rounded-full border px-6 py-3 text-sm font-medium transition-all duration-300 ease-in-out ${
+                                        className={`inline-flex items-center justify-center rounded-2 border px-6 py-3 text-sm font-medium transition-all duration-300 ease-in-out ${
                                             isHoveredServices ? 'bg-[#175379] text-white' : 'text-[#175379] border-[#175379]'
                                         }`}
                                         onMouseEnter={() => setIsHoveredServices(true)}
