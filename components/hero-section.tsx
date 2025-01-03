@@ -17,36 +17,36 @@ const carouselItems = [
     image: '/images/web.jpg?height=400&width=600',
     title: 'Web Development',
     description: 'Create stunning, responsive websites',
-    cta: 'Explore Web Dev',
-      link: '/services/service/web-development'
+    cta: 'Learn More',
+      link: '/services/service/web-development',
   },
     {
     image: '/images/digmark.jpg?height=400&width=600',
     title: 'Digital Marketing',
     description: 'Run strategic, impactful campaigns to improve your online presence.',
-    cta: 'Explore Web Dev',
-      link: '/services/service/digital-marketing'
+    cta: 'Learn More',
+      link: '/services/service/digital-marketing',
   },
   {
     image: '/images/mobileapp.jpg?height=400&width=600',
     title: 'Mobile Apps',
     description: 'Build powerful mobile applications',
-    cta: 'Discover Mobile',
-      link: '/services/service/mobile-app-development'
+    cta: 'Learn More',
+      link: '/services/service/mobile-app-development',
   },
   {
     image: '/images/social.jpg?height=400&width=600',
     title: 'UI/UX Design',
     description: 'Design intuitive user interfaces',
-    cta: 'Learn UI/UX',
-      link: '/services/service/ui-ux-design'
+    cta: 'Learn More',
+      link: '/services/service/ui-ux-design',
   },
     {
     image: '/images/ecommerce.jpg?height=400&width=600',
     title: 'Ecommerce',
     description: 'Create stunning, responsive ecommerce apps',
-    cta: 'Ecommerce Dev',
-      link: '/services/service/ecommerce'
+    cta: 'Learn More',
+      link: '/services/service/ecommerce',
   },
 ]
 
@@ -126,10 +126,10 @@ export default function HeroSection() {
 
                     {/* Text Content */}
                     <div className="w-full lg:w-1/2 order-2 lg:order-1 flex flex-col items-center text-center lg:items-start lg:text-left">
-                        <h1 className="text-4xl font-bold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#15158c] to-[#ee333c] whitespace-nowrap overflow-hidden text-ellipsis w-full">
+                        <h1 className="text-3xl font-bold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#15158c] to-[#ee333c] whitespace-nowrap overflow-hidden text-ellipsis w-full">
                             INNOVATE. CREATE. SUCCEED.
                         </h1>
-                        <p className="mt-4 mb-8 max-w-[600px] text-gray-700 text-xl dark:text-gray-400">
+                        <p className="mt-4 mb-8 max-w-[600px] text-gray-700 text-lg dark:text-gray-400">
                             Transform your business with expert digital solutions from Fundi wa Mtandao. Whether you need a stunning website, seamless e-commerce platform, or impactful digital marketing campaigns, we’re here to help your brand stand out. We also specialize in custom software solutions, Mpesa integration, and IT support to keep your operations running smoothly. Partner with us to grow your business and achieve digital dominance.
                         </p>
 
