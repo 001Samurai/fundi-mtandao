@@ -89,7 +89,7 @@ export default function HeroSection() {
                             </svg>
                             
                             {/* Carousel Container */}
-                            <div className="absolute overflow-hidden inset-[5px] rounded-lg">
+                            <div className="absolute overflow-hidden inset-[20px] rounded-lg">
                                 <Swiper
                                     modules={[Pagination, Autoplay, EffectFade]}
                                     pagination={{ clickable: true }}
