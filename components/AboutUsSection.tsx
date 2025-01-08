@@ -42,8 +42,8 @@ export default function AboutUsSection() {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src="/images/about-3.webp?height=400&width=600"
-              alt="DigitalCraft Agency Team"
+              src="/images/new-about-img.png?height=400&width=600"
+              alt="Agency Team"
               width={600}
               height={400}
               className="rounded-lg shadow-lg"
@@ -55,9 +55,9 @@ export default function AboutUsSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="px-4 sm:px-6 md:px-8 max-w-full overflow-hidden">
-              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-4">Your Partner in Digital Excellence!</h3>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold mb-2 sm:mb-4">Your Vision, Our Expertise: Digital Solutions Tailored for You!</h3>
               <p className="text-sm sm:text-base mb-4">
-                At Fundi wa Mtandao, we offer a comprehensive suite of web development and digital marketing services. From stunning websites to powerful online campaigns, we're here to elevate your digital presence and drive your business growth.
+                At Fundi wa Mtandao, we believe that every business deserves innovative, customized digital solutions. As a solopreneur-led startup, we leverage a network of top-tier freelance professionals from across the globe to meet your unique project needs.
               </p>
               <div className="flex space-x-2">
                 <Button onClick={() => setIsExpanded(!isExpanded)}>
@@ -83,7 +83,7 @@ export default function AboutUsSection() {
             <Card className="mb-8">
               <CardContent className="pt-6">
                 <p className="mb-4">
-                  Our team of expert developers and marketers work tirelessly to create tailored solutions that meet your unique business needs. We combine cutting-edge technology with creative strategies to deliver results that exceed expectations.
+                  From web development to app design and digital marketing, we combine the best talents and industry insights to deliver exceptional results—on time, every time. Guided by a commitment to quality and collaboration, we manage every aspect of your project, ensuring seamless execution and your complete satisfaction.
                 </p>
                 <p>
                   Whether you're a small startup or an established enterprise, we are committed to helping you thrive in the digital landscape. We pride ourselves on our innovative approach, attention to detail, and dedication to client success.
