@@ -89,7 +89,7 @@ export default function HeroSection() {
                             </svg>
                             
                             {/* Carousel Container */}
-                            <div className="absolute inset-[20px] overflow-hidden rounded-lg">
+                            <div className="absolute overflow-hidden rounded-lg">
                                 <Swiper
                                     modules={[Pagination, Autoplay, EffectFade]}
                                     pagination={{ clickable: true }}
@@ -126,7 +126,7 @@ export default function HeroSection() {
 
                     {/* Text Content */}
                     <div className="w-full lg:w-1/2 order-2 lg:order-1 flex flex-col items-center text-center lg:items-start lg:text-left">
-                        <h1 className="text-3xl font-bold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#15158c] to-[#ee333c] whitespace-nowrap overflow-hidden text-ellipsis w-full">
+                        <h1 className="text-3xl font-bold tracking-tighter uppercase bg-clip-text text-transparent bg-gradient-to-r from-[#15158c] to-[#ee333c] whitespac overflow-hidden text-ellipsis w-full">
                             INNOVATE. CREATE. SUCCEED.
                         </h1>
                         <p className="mt-4 mb-8 max-w-[600px] text-gray-700 text-lg dark:text-gray-400">
