@@ -222,7 +222,7 @@ export default function BlogHomePage() {
                 </motion.div>
                 <div className="container mx-auto px-4 relative z-10">
                     <motion.h1
-                        className="text-4xl md:text-6xl font-bold mb-4"
+                        className="text-4xl md:text-6xl text-dark font-bold mb-4"
                         initial={{ y: -50, opacity: 0 }}
                         animate={headerInView ? { y: 0, opacity: 1 } : {}}
                         transition={{ duration: 0.5 }}
@@ -230,12 +230,12 @@ export default function BlogHomePage() {
                         Fundi wa Mtandao Insights.
                     </motion.h1>
                     <motion.p
-                        className="text-xl text-gray-800 font-semibold max-w-2xl mx-auto mb-8"
+                        className="text-xl text-dark font-semibold max-w-2xl mx-auto mb-8"
                         initial={{ y: 50, opacity: 0 }}
                         animate={headerInView ? { y: 0, opacity: 1 } : {}}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                        Explore the latest trends, insights, and strategies in web development, digital marketing, and UX design.
+                        Explore the latest trends, insights, and strategies in web development, digital marketing, and UX design and much more.
                     </motion.p>
                     <motion.div
                         className="max-w-md mx-auto"
@@ -244,7 +244,7 @@ export default function BlogHomePage() {
                         transition={{ duration: 0.5, delay: 0.4 }}
                     >
                         <div className="relative w-full">
-                            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-800" />
+                            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-dark" />
                             <Input
                                 type="search"
                                 placeholder="Search articles..."
