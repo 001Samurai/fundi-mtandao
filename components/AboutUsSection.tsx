@@ -27,7 +27,7 @@ export default function AboutUsSection() {
     <section className="bg-gradient-to-b flex flex-col from-primary/10 to-background py-16">
       <div className="container mx-auto px-4">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-8"
+          className="text-3xl md:text-4xl font-bold text-center mb-12"
           initial="hidden"
           animate="visible"
           variants={fadeIn}
@@ -43,7 +43,7 @@ export default function AboutUsSection() {
           >
             <Image
               src="/images/new-about-img.png?height=400&width=600"
-              alt="Agency Team"
+              alt="Fundi wa Mtandao About us Image"
               width={600}
               height={400}
               className="rounded-lg shadow-lg"
