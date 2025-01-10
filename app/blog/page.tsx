@@ -82,13 +82,13 @@ const categories = ["All", "Web", "Marketing", "SEO", "Design"]
 
 const FeaturedPost = ({ post }: { post: { id: number; title: string; excerpt: string; author: string; date: string; readTime: string; image: string; category: string; tags: string[] } }) => (
     <Card className="overflow-hidden">
-        <div className="relative h-64 md:h-80">
+        <div className="relative">
             <Image
                 src={post.image}
                 alt={post.title}
-                width={400}
+                width={600}
                 height={300}
-                className="object-cover"
+                className="object-contain"
                 priority={false}
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
@@ -128,13 +128,13 @@ const FeaturedPost = ({ post }: { post: { id: number; title: string; excerpt: st
 
 const BlogPost = ({ post }: { post: { id: number; title: string; excerpt: string; author: string; date: string; readTime: string; image: string; category: string; tags: string[] } }) => (
     <Card>
-        <div className="relative h-48">
+        <div className="relative">
             <Image
                 src={post.image}
                 alt={post.title}
-                width={400}
+                width={600}
                 height={300}
-                className="object-cover"
+                className="object-contain"
                 priority={false}
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
@@ -211,18 +211,18 @@ export default function BlogHomePage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-            <header className="py-20 text-center relative overflow-hidden bg-gradient-to-b from-background to-primary/30">
+            <header className="py-20 text-center overflow-hidden relative">
                 <motion.div
-                    className="absolute inset-0 z-0"
+                    className="absolute inset-0 z-10"
                     initial={{ scale: 1.2, opacity: 0 }}
                     animate={{ scale: 1, opacity: 0.1 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <div className="absolute inset-0 bg-grid-white/10 bg-grid-16 [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]" />
+                    <div className="absolute inset-0 z-0 bg-grid-white/10 bg-grid-16" />
                 </motion.div>
-                <div className="container mx-auto px-4 relative z-10">
+                <div className="container mx-auto px-4 relative">
                     <motion.h1
-                        className="text-4xl md:text-6xl text-dark font-bold mb-4"
+                        className="text-4xl md:text-6xl text-gray-900 font-bold mb-4"
                         initial={{ y: -50, opacity: 0 }}
                         animate={headerInView ? { y: 0, opacity: 1 } : {}}
                         transition={{ duration: 0.5 }}
