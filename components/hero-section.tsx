@@ -59,10 +59,10 @@ export default function HeroSection() {
         "@type": "WebSite",
         "name": "Fundi Mtandao",
         "description": "Professional web development and digital marketing services",
-        "url": "https://fundi-mtandao.vercel.app",
+        "url": "https://fundi-wa-mtandao.co.ke",
         "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://fundi-mtandao.vercel.app/search?q={search_term_string}",
+            "target": "https://fundi-wa-mtandao.co.ke/search?q={search_term_string}",
             "query-input": "required name=search_term_string"
         }
     }

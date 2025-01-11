@@ -1,86 +1,32 @@
 'use client'
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion, useInView } from 'framer-motion'
-import { ArrowRight, Search, Tag, Calendar, User, Clock, ChevronRight } from 'lucide-react'
+import { ArrowRight, Tag, Calendar, User, Clock, ChevronRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Label } from '@/components/ui/label'
 import dynamic from 'next/dynamic'
+import { Search } from './Search'
+import type { BlogPost } from './blogPosts'
+import { blogPosts } from './blogPosts'
+import { Input } from "@/components/ui/input"
+import { SearchIcon } from 'lucide-react'
+
 
 // Lazy load non-critical components
 const DynamicTabs = dynamic(() => import('@/components/ui/tabs').then(mod => mod.Tabs), {
     loading: () => <p>Loading...</p>
 })
 
-// Mock data for blog posts
-const blogPosts = [
-    {
-        id: 1,
-        title: "10 Web Development Trends to Watch in 2024",
-        excerpt: "Stay ahead of the curve with these emerging web development trends that are shaping the digital landscape.",
-        author: "David Machua",
-        date: "2023-11-15",
-        readTime: "8 min read",
-        image: "/images/blog/placeholder.jpg",
-        category: "Web",
-        tags: ["Trends", "Technology", "Innovation"]
-    },
-    {
-        id: 2,
-        title: "The Impact of AI on Digital Marketing Strategies",
-        excerpt: "Explore how artificial intelligence is revolutionizing digital marketing and how businesses can leverage it for success.",
-        author: "Sarah Johnson",
-        date: "2023-11-10",
-        readTime: "6 min read",
-        image: "/images/blog/placeholder.jpg",
-        category: "Marketing",
-        tags: ["AI", "Marketing", "Technology"]
-    },
-    {
-        id: 3,
-        title: "Optimizing Website Performance: A Comprehensive Guide",
-        excerpt: "Learn essential techniques to boost your website's speed and performance, improving user experience and SEO.",
-        author: "David Machua",
-        date: "2023-11-05",
-        readTime: "10 min read",
-        image: "/images/blog/placeholder.jpg",
-        category: "Web",
-        tags: ["Performance", "Optimization", "SEO"]
-    },
-    {
-        id: 4,
-        title: "The Rise of Voice Search: Implications for SEO",
-        excerpt: "Discover how voice search is changing the SEO landscape and strategies to optimize your content for voice queries.",
-        author: "Emily Chen",
-        date: "2023-10-30",
-        readTime: "7 min read",
-        image: "/images/blog/placeholder.jpg",
-        category: "SEO",
-        tags: ["Voice Search", "SEO", "Content Strategy"]
-    },
-    {
-        id: 5,
-        title: "Creating Engaging User Experiences with Motion Design",
-        excerpt: "Explore the power of motion design in creating captivating and intuitive user interfaces for web and mobile applications.",
-        author: "David Machua",
-        date: "2023-10-25",
-        readTime: "9 min read",
-        image: "/images/blog/placeholder.jpg",
-        category: "Design",
-        tags: ["Motion Design", "UX", "Interaction"]
-    }
-]
-
 const categories = ["All", "Web", "Marketing", "SEO", "Design"]
 
-const FeaturedPost = ({ post }: { post: { id: number; title: string; excerpt: string; author: string; date: string; readTime: string; image: string; category: string; tags: string[] } }) => (
+const FeaturedPost = ({ post }: { post: BlogPost }) => (
     <Card className="overflow-hidden">
         <div className="relative">
             <Image
@@ -88,7 +34,7 @@ const FeaturedPost = ({ post }: { post: { id: number; title: string; excerpt: st
                 alt={post.title}
                 width={600}
                 height={300}
-                className="object-contain"
+                className="object-cover w-full h-[300px]"
                 priority={false}
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
@@ -126,7 +72,7 @@ const FeaturedPost = ({ post }: { post: { id: number; title: string; excerpt: st
     </Card>
 )
 
-const BlogPost = ({ post }: { post: { id: number; title: string; excerpt: string; author: string; date: string; readTime: string; image: string; category: string; tags: string[] } }) => (
+const BlogPost = ({ post }: { post: BlogPost }) => (
     <Card>
         <div className="relative">
             <Image
@@ -134,7 +80,7 @@ const BlogPost = ({ post }: { post: { id: number; title: string; excerpt: string
                 alt={post.title}
                 width={600}
                 height={300}
-                className="object-contain"
+                className="object-cover w-full h-[200px]"
                 priority={false}
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRg..."
@@ -171,10 +117,25 @@ const BlogPost = ({ post }: { post: { id: number; title: string; excerpt: string
 
 export default function BlogHomePage() {
     const [searchTerm, setSearchTerm] = useState('')
+    const [searchResults, setSearchResults] = useState<BlogPost[]>([])
     const [activeCategory, setActiveCategory] = useState('All')
     const [email, setEmail] = useState('')
     const headerRef = useRef(null)
     const headerInView = useInView(headerRef, { once: true })
+
+    const handleSearch = (term: string) => {
+        setSearchTerm(term);
+        if (term.trim() === '') {
+            setSearchResults([]);
+        } else {
+            const results = blogPosts.filter((post) =>
+                post.title.toLowerCase().includes(term.toLowerCase()) ||
+                post.excerpt.toLowerCase().includes(term.toLowerCase()) ||
+                post.tags.some((tag) => tag.toLowerCase().includes(term.toLowerCase()))
+            );
+            setSearchResults(results);
+        }
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -185,57 +146,50 @@ export default function BlogHomePage() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email }), // Send the email in the request body
+                body: JSON.stringify({ email }),
             });
 
             if (!response.ok) {
                 throw new Error('Failed to send subscription data');
             }
 
-            // If the response is successful, show a success alert
             alert('Subscription Successful');
-            setEmail(''); // Clear the email input
+            setEmail('');
         } catch (error) {
-            // Assert that error is of type Error
             const errorMessage = (error as Error).message || 'An unknown error occurred';
             console.error('Error:', error);
             alert('Subscription Failed: ' + errorMessage);
         }
     };
 
-    const filteredPosts = blogPosts.filter(post =>
-        (activeCategory === 'All' || post.category === activeCategory) &&
-        (post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()))
-    )
+    const filteredPosts = activeCategory === 'All'
+        ? blogPosts
+        : blogPosts.filter(post => post.category === activeCategory);
 
     return (
         <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-            <header className="py-20 text-center overflow-hidden relative">
-                <motion.div
-                    className="absolute inset-0 z-10"
-                    initial={{ scale: 1.2, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.1 }}
-                    transition={{ duration: 0.8 }}
-                >
-                    <div className="absolute inset-0 z-0 bg-grid-white/10 bg-grid-16" />
-                </motion.div>
-                <div className="container mx-auto px-4 relative">
+            <header ref={headerRef} className="py-20 text-center overflow-hidden relative">
+                <div
+                    className="absolute inset-0 bg-cover bg-center z-0"
+                    style={{ backgroundImage: "url('/images/branding.jpg')" }}
+                />
+                <div className="absolute inset-0 bg-black opacity-50 z-10" />
+                <div className="container mx-auto px-4 relative z-20">
                     <motion.h1
-                        className="text-4xl md:text-6xl text-gray-900 font-bold mb-4"
+                        className="text-4xl md:text-6xl text-white font-bold mb-4"
                         initial={{ y: -50, opacity: 0 }}
                         animate={headerInView ? { y: 0, opacity: 1 } : {}}
                         transition={{ duration: 0.5 }}
                     >
-                        Fundi wa Mtandao Insights.
+                        Discover the Digital Frontier
                     </motion.h1>
                     <motion.p
-                        className="text-xl text-dark font-semibold max-w-2xl mx-auto mb-8"
+                        className="text-xl text-white font-semibold max-w-2xl mx-auto mb-8"
                         initial={{ y: 50, opacity: 0 }}
                         animate={headerInView ? { y: 0, opacity: 1 } : {}}
                         transition={{ duration: 0.5, delay: 0.2 }}
                     >
-                        Explore the latest trends, insights, and strategies in web development, digital marketing, and UX design and much more.
+                        Explore the latest trends, insights, and strategies in web development, digital marketing, and UX design.
                     </motion.p>
                     <motion.div
                         className="max-w-md mx-auto"
@@ -243,21 +197,34 @@ export default function BlogHomePage() {
                         animate={headerInView ? { opacity: 1 } : {}}
                         transition={{ duration: 0.5, delay: 0.4 }}
                     >
-                        <div className="relative w-full">
-                            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-dark" />
-                            <Input
-                                type="search"
-                                placeholder="Search articles..."
-                                className="pl-10 w-full bg-transparent"
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
-                        </div>
+                        <Search onSearch={handleSearch} blogPosts={blogPosts} />
                     </motion.div>
                 </div>
             </header>
 
             <main className="container mx-auto px-4 py-16">
+                {searchTerm && (
+                    <section className="mb-16">
+                        <h2 className="text-3xl font-bold mb-8">Search Results</h2>
+                        {searchResults.length === 0 ? (
+                            <p className="text-center text-gray-500 my-8">No results found for "{searchTerm}"</p>
+                        ) : (
+                            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                                {searchResults.map((post, index) => (
+                                    <motion.div
+                                        key={post.id}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                                    >
+                                        <BlogPost post={post} />
+                                    </motion.div>
+                                ))}
+                            </div>
+                        )}
+                    </section>
+                )}
+
                 <section className="mb-16">
                     <h2 className="text-3xl font-bold mb-8">Featured Article</h2>
                     <FeaturedPost post={blogPosts[0]} />
@@ -276,8 +243,11 @@ export default function BlogHomePage() {
                             </TabsList>
                         </DynamicTabs>
                     </div>
+                    {searchTerm && searchResults.length === 0 && (
+                        <p className="text-center text-gray-500 my-8">No results found for "{searchTerm}"</p>
+                    )}
                     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                        {filteredPosts.slice(1).map((post, index) => (
+                        {(searchTerm ? searchResults : filteredPosts).map((post, index) => (
                             <motion.div
                                 key={post.id}
                                 initial={{ opacity: 0, y: 20 }}
@@ -302,14 +272,14 @@ export default function BlogHomePage() {
                             <form onSubmit={handleSubmit} className="space-y-2">
                                 <Label htmlFor="email" className="sr-only">Email</Label>
                                 <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
-                                    <Input
+                                    <input
                                         type="email"
                                         id="email"
                                         placeholder="Enter your email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         required
-                                        className="w-full sm:w-auto"
+                                        className="w-full sm:w-auto px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-white/50"
                                     />
                                     <Button type="submit" className="w-full sm:w-auto">
                                         Subscribe
@@ -324,3 +294,4 @@ export default function BlogHomePage() {
         </div>
     )
 }
+
