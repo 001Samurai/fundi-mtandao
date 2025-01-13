@@ -12,12 +12,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Label } from '@/components/ui/label'
 import dynamic from 'next/dynamic'
-import { Search } from './Search'
-import type { BlogPost } from './blogPosts'
-import { blogPosts } from './blogPosts'
+import { Search } from '@/components/Search'
+import { blogPosts } from '@/data/blogPosts'
+import type { BlogPost } from '@/data/blogPosts'
 import { Input } from "@/components/ui/input"
-import { SearchIcon } from 'lucide-react'
-
 
 // Lazy load non-critical components
 const DynamicTabs = dynamic(() => import('@/components/ui/tabs').then(mod => mod.Tabs), {
@@ -64,9 +62,11 @@ const FeaturedPost = ({ post }: { post: BlogPost }) => (
                     <p className="text-xs text-muted-foreground">{post.readTime}</p>
                 </div>
             </div>
-            <Button variant="outline">
-                Read More
-                <ArrowRight className="ml-2 h-4 w-4" />
+            <Button variant="outline" asChild>
+                <Link href={`/blog/${post.slug}`}>
+                    Read More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
             </Button>
         </CardFooter>
     </Card>
@@ -107,9 +107,11 @@ const BlogPost = ({ post }: { post: BlogPost }) => (
                 </Avatar>
                 <p className="text-sm font-medium">{post.author}</p>
             </div>
-            <Button variant="ghost" size="sm">
-                Read More
-                <ChevronRight className="ml-1 h-4 w-4" />
+            <Button variant="ghost" size="sm" asChild>
+                <Link href={`/blog/${post.slug}`}>
+                    Read More
+                    <ChevronRight className="ml-1 h-4 w-4" />
+                </Link>
             </Button>
         </CardFooter>
     </Card>
@@ -171,7 +173,7 @@ export default function BlogHomePage() {
             <header ref={headerRef} className="py-20 text-center overflow-hidden relative">
                 <div
                     className="absolute inset-0 bg-cover bg-center z-0"
-                    style={{ backgroundImage: "url('/images/branding.jpg')" }}
+                    style={{ backgroundImage: "url('/images/responsive-web.webp')" }}
                 />
                 <div className="absolute inset-0 bg-black opacity-50 z-10" />
                 <div className="container mx-auto px-4 relative z-20">
