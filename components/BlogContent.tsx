@@ -1,36 +1,41 @@
 import React from 'react'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
-import { Heading } from 'react-markdown/lib/ast-to-react'
-
+import type { Components } from 'react-markdown'
 
 interface BlogContentProps {
   content: string
 }
 
 export function BlogContent({ content }: BlogContentProps) {
-  const customRenderers = {
-    h1: (props: Heading) => {
-      const id = props.children[0].toString().toLowerCase().replace(/\s+/g, '-')
-      return <h1 id={id} className="text-3xl font-bold mt-8 mb-4">{props.children}</h1>
+  const customRenderers: Components = {
+    h1: ({ node, children }) => {
+      const headingText = String(children)
+      const id = headingText.toLowerCase().replace(/\s+/g, '-')
+      return <h1 id={id} className="text-3xl font-bold mt-8 mb-4">{children}</h1>
     },
-    h2: (props: Heading) => {
-      const id = props.children[0].toString().toLowerCase().replace(/\s+/g, '-')
-      return <h2 id={id} className="text-2xl font-semibold mt-6 mb-3">{props.children}</h2>
+    h2: ({ node, children }) => {
+      const headingText = String(children)
+      const id = headingText.toLowerCase().replace(/\s+/g, '-')
+      return <h2 id={id} className="text-2xl font-semibold mt-6 mb-3">{children}</h2>
     },
-    h3: (props: Heading) => {
-      const id = props.children[0].toString().toLowerCase().replace(/\s+/g, '-')
-      return <h3 id={id} className="text-xl font-medium mt-4 mb-2">{props.children}</h3>
+    h3: ({ node, children }) => {
+      const headingText = String(children)
+      const id = headingText.toLowerCase().replace(/\s+/g, '-')
+      return <h3 id={id} className="text-xl font-medium mt-4 mb-2">{children}</h3>
     },
-    img: (props: { src?: string; alt?: string }) => (
-      <Image
-        src={props.src || ''}
-        alt={props.alt || ''}
-        width={800}
-        height={400}
-        className="rounded-lg shadow-md my-8"
-      />
-    ),
+    img: ({ src, alt }) => {
+      if (!src) return null;
+      return (
+        <Image
+          src={src}
+          alt={alt || ''}
+          width={800}
+          height={400}
+          className="rounded-lg shadow-md my-8"
+        />
+      );
+    },
   }
 
   return (
@@ -41,4 +46,3 @@ export function BlogContent({ content }: BlogContentProps) {
     </div>
   )
 }
-
