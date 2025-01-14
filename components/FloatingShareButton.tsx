@@ -98,10 +98,11 @@ export function FloatingShareButton({ title, slug }: FloatingShareButtonProps) {
                 className="rounded-full shadow-md"
                 onClick={() => window.open(button.url, '_blank')}
               >
-                {typeof button.icon === 'function' ? 
-                  <button.icon /> : 
-                  <button.icon className="h-5 w-5" />
-                }
+                {typeof button.icon === 'function' ? (
+  React.createElement(button.icon)
+) : (
+  React.createElement(button.icon, { className: "h-5 w-5" })
+)}
               </Button>
             ))}
           </motion.div>
