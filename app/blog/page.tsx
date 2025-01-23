@@ -229,7 +229,7 @@ export default function BlogHomePage() {
 
                 <section className="mb-16">
                     <h2 className="text-3xl font-bold mb-8">Featured Article</h2>
-                    <FeaturedPost post={blogPosts[0]} />
+                    <FeaturedPost post={blogPosts[3]} />
                 </section>
 
                 <section>
