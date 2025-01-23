@@ -3,15 +3,12 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import { Suspense } from 'react';
 import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton
+  ClerkProvider
 } from '@clerk/nextjs'
 
 
@@ -96,6 +93,10 @@ export default function RootLayout({
           </Suspense>
         </main>
         <Footer />
+        <WhatsAppButton 
+          phoneNumber="254707211023" 
+          message="Hello! I'm interested in your services."
+        />
         <SpeedInsights />
         <Analytics />
       </body>
