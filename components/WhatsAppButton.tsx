@@ -3,14 +3,14 @@ import React from 'react';
 interface WhatsAppButtonProps {
   phoneNumber: string;
   message?: string;
-  position?: 'bottom-right' | 'bottom-left';
+  position?: 'bottom-left';
   size?: number;
 }
 
 const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   phoneNumber,
   message = 'Hello! I have a question.',
-  position = 'bottom-right',
+  position = 'bottom-left',
   size = 56
 }) => {
   // Prepare WhatsApp link
@@ -18,7 +18,6 @@ const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
 
   // Positioning classes
   const positionClasses = {
-    'bottom-right': 'right-6 bottom-6',
     'bottom-left': 'left-6 bottom-6'
   };
 

@@ -290,7 +290,7 @@ Stay curious, stay adaptable, and embrace these trends to stay ahead in the ever
     author: "David M",
     date: "2023-11-10",
     readTime: "6 min read",
-    image: "/images/blog/ai-marketing.jpg",
+    image: "/images/blog/digimark-with-ai.jpeg",
     category: "Marketing",
     tags: ["AI", "Marketing", "Technology"]
   },
@@ -416,9 +416,104 @@ Stay curious, stay adaptable, and embrace these trends to stay ahead in the ever
     author: "David Machua",
     date: "2023-11-05",
     readTime: "10 min read",
-    image: "/images/blog/website-performance.jpg",
+    image: "/images/blog/web-optim.jpg",
     category: "Web",
     tags: ["Performance", "Optimization", "SEO"]
   },
+
+    {
+    id: 4,
+    title: "Why Every SME Needs a website in 2025",
+    slug: "benefits-of-websites-for-SMEs",
+    excerpt: "Learn essential techniques to boost your website's speed and performance, improving user experience and SEO.",
+    content: `
+  
+  # Why Every SME Needs a Website in 2025  
+
+In today’s fast-paced, technology-driven world, having a strong online presence is no longer optional—it’s essential. Yet, many small and medium enterprises (SMEs) hesitate to take the leap into the digital world, missing out on countless growth opportunities.  
+
+At **Fundi wa Mtandao**, we’ve seen firsthand how a well-designed website can transform businesses. In this blog, we’ll explore why your SME needs a website and how it can open up new possibilities for growth in 2025 and beyond.  
+
+---
+
+## 1. First Impressions Count  
+Imagine this: A potential customer hears about your business and searches for you online—only to find… nothing.  
+
+Without a website, your credibility takes a hit. Studies show that **75% of consumers judge a company’s credibility based on its website design.**  
+
+A professional website acts as your **digital storefront**, making a powerful first impression 24/7, even when your physical shop is closed. A modern, user-friendly website gives customers confidence in your business and its ability to deliver.  
+
+---
+
+## 2. Your Competitors Are Already Online  
+Did you know that **70% of consumers research products and services online** before making a purchase?  
+
+Your competitors know this and are actively capturing that audience. Without a website, you’re giving them a head start.  
+
+A well-optimized website ensures your business appears in search results when customers are looking for services like yours. Don’t miss out on these valuable opportunities to stay competitive and visible in your industry.  
+
+---
+
+## 3. Expand Your Market Beyond Borders  
+With a website, you’re not limited to local foot traffic. You can sell your products or services to customers across your city, country, or even globally. 🌍  
+
+E-commerce platforms and online payment systems make it easier than ever to expand your market and grow your customer base. Whether it’s a small boutique or a service-based business, the internet allows you to scale beyond borders without heavy overhead costs.  
+
+---
+
+## 4. Websites Work Even When You’re Sleeping  
+Unlike a physical store with set operating hours, your website is open 24/7. This means customers can browse your services, place orders, or send inquiries at any time of day or night.  
+
+Imagine waking up to new inquiries, orders, or bookings made while you were asleep. A website acts as your **best salesperson**, tirelessly working around the clock to generate leads and drive sales.  
+
+---
+
+## 5. It’s More Affordable Than You Think  
+Many SMEs avoid building a website because they assume it’s too expensive. But in reality, creating a professional website is more affordable than ever.  
+
+At **Fundi wa Mtandao**, we specialize in offering **affordable, professionally designed websites tailored for SMEs.** You don’t need to break the bank to get started. And when you factor in the potential return on investment (ROI), the cost of a website becomes an essential business expense, not a luxury.  
+
+---
+
+## 6. Build Trust and Engage Your Audience  
+A website isn’t just about selling—it’s about building trust and fostering relationships with your audience.  
+
+Through features like blogs, customer testimonials, FAQs, and contact forms, you can engage with your audience and address their questions or concerns. A well-designed website also positions your business as an expert in your field, making customers more likely to choose your services over competitors.  
+
+---
+
+## Ready to Take the Leap?  
+
+At **Fundi wa Mtandao**, we understand the challenges SMEs face, and we’re here to help. Whether you’re a startup looking for your first website or an established business needing a refresh, we’ve got you covered!  
+
+### What We Offer:  
+- ✅ Affordable and professional website development.  
+- ✅ Mobile-friendly and responsive designs.  
+- ✅ SEO-optimized websites to boost your visibility.  
+- ✅ Free consultation to understand your business needs.  
+
+---
+
+## Let’s Build Your Future Together  
+
+📩 **Contact Us Today**!  
+Send us a message or visit our website [Insert your website link] to schedule your free consultation. Let us take your business to the next level.  
+
+✨ **Don’t wait for success to find you—let’s build it together!** ✨  
+
+---
+
+**#DigitalTransformation #WebDesign #SmallBusinessGrowth #FundiWaMtandao**
+    `,
+    author: "David Machua",
+    date: "2023-11-05",
+    readTime: "10 min read",
+    image: "/images/blog/web-optim.jpg",
+    category: "Web",
+    tags: ["Performance", "Optimization", "SEO"]
+  },
+  
+
+  
 ];
 

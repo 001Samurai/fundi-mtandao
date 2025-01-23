@@ -42,7 +42,7 @@ export default function AboutUsSection() {
             transition={{ duration: 0.5 }}
           >
             <Image
-              src="/images/new-about-img.png?height=400&width=600"
+              src="/images/about-image-repl.png?height=400&width=600"
               alt="Fundi wa Mtandao About us Image"
               width={600}
               height={400}
