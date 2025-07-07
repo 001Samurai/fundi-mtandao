@@ -13,7 +13,7 @@ const plans = [
     {
         name: 'Starter',
         description: 'For small businesses & startups',
-        price: 'KES 25,000 - 50,000',
+        price: 'KES 15,000 - 30,000',
         features: [
             'Single-page website',
             'Responsive design',
@@ -22,48 +22,48 @@ const plans = [
             'Basic social media setup (1-2 platforms)',
         ],
         addons: [
-            { name: 'Basic SEO services', price: 'KES 5,000 - 10,000' },
-            { name: 'Analytics setup', price: 'KES 3,000' },
+            { name: 'Basic SEO services', price: 'KES 5k - 10k' },
+            { name: 'Analytics setup', price: 'KES 3k' },
         ],
     },
     {
         name: 'Growth',
         description: 'For scaling businesses',
-        price: 'KES 60,000 - 120,000',
+        price: 'KES 35,000 - 60,000',
         features: [
             'Multi-page website with CMS',
             'SEO-friendly structure',
             'On-page optimization',
-            'Social media management (2 platforms)',
+            'Social media management (3 platforms)',
             '3 blog posts or articles',
             'Mpesa integration',
         ],
         addons: [
-            { name: 'PPC Advertising Campaign setup', price: 'Starting at KES 10,000' },
-            { name: 'Advanced analytics and reporting', price: 'KES 8,000' },
+            { name: 'PPC Advertising Campaign setup', price: 'Starting at KES 10k' },
+            { name: 'Advanced analytics and reporting', price: 'KES 8k' },
         ],
     },
     {
         name: 'Premium',
         description: 'Comprehensive digital presence',
-        price: 'KES 150,000 - 250,000',
+        price: 'KES 70,000 - 100,000',
         features: [
             'Custom functionality & advanced CMS',
             'Fully functional online store',
             'Advanced SEO strategy',
-            'Social media management (3 platforms)',
+            'Social media management (5 platforms)',
             '5-8 pieces of content',
             'Detailed analytics & reporting',
         ],
         addons: [
-            { name: 'Mobile App Development', price: 'KES 80,000+' },
-            { name: 'DevOps and hosting setup', price: 'KES 15,000+' },
+            { name: 'Mobile App Development', price: 'KES 50k+' },
+            { name: 'DevOps and hosting setup', price: 'KES 5k+' },
         ],
     },
     {
         name: 'Enterprise',
         description: 'Custom solutions for large businesses',
-        price: 'KES 300,000+',
+        price: 'KES 120,000+',
         features: [
             'Fully customizable solutions',
             'Advanced mobile app development',
@@ -80,9 +80,9 @@ export default function PricingCards() {
 
     return (
         <div className="py-24 sm:py-32">
-            <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-6">
                 <div className="mx-auto max-w-4xl text-center">
-                    <h2 className="font-semibold text-3xl">Pricing</h2>
+                    <h2 className="font-semibold text-5xl">Pricing</h2>
                     <p className="mt-2 text-xl font-bold tracking-tight sm:text-5xl">
                         Choose the right plan for your business
                     </p>
@@ -104,11 +104,11 @@ export default function PricingCards() {
                             <Card className={`flex flex-col justify-between h-full ${hoveredPlan === plan.name ? 'shadow-lg' : ''}`}>
                                 <CardHeader>
                                     <CardTitle>{plan.name}</CardTitle>
-                                    <CardDescription>{plan.description}</CardDescription>
+                                    <CardDescription className='text-xs'>{plan.description}</CardDescription>
                                 </CardHeader>
                                 <CardContent>
-                                    <div className="mt-6 flex items-baseline justify-center gap-x-2">
-                                        <span className="text-xl font-bold tracking-tight">{plan.price}</span>
+                                    <div className="mt-2 flex items-baseline gap-x-1">
+                                        <span className="text-lg font-bold tracking-tight">{plan.price}</span>
                                     </div>
                                     <ul role="list" className="mt-8 space-y-3 text-sm leading-6">
                                         {plan.features.map((feature) => (
@@ -124,8 +124,8 @@ export default function PricingCards() {
                                             <ul className="space-y-2 text-sm">
                                                 {plan.addons.map((addon) => (
                                                     <li key={addon.name} className="flex justify-between">
-                                                        <span>{addon.name}</span>
-                                                        <span className="text-muted-foreground">{addon.price}</span>
+                                                        <span className='text-xs'>{addon.name}</span>
+                                                        <span className="text-xs text-muted-foreground">{addon.price}</span>
                                                     </li>
                                                 ))}
                                             </ul>
