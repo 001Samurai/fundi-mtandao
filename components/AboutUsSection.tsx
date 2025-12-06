@@ -573,23 +573,23 @@ export default function AboutUsSection() {
                     className="group relative overflow-hidden bg-gradient-to-r from-[#175379] to-[#15158c] hover:from-[#e47a33] hover:to-[#175379] text-white shadow-xl hover:shadow-2xl transition-all duration-500"
                   >
                     <span className="relative z-10 flex items-center">
-                      Learn More
+                  Learn More
                       <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
                     </span>
                     <motion.div
                       className="absolute inset-0 bg-gradient-to-r from-[#e47a33] to-[#175379] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                       initial={false}
                     />
-                  </Button>
-                  <Link href="/about">
+                </Button>
+                <Link href="/about">
                     <Button 
                       variant="outline" 
                       className="w-full sm:w-auto border-2 border-[#175379] text-[#175379] hover:bg-[#175379] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
-                      See About Page
+                    See About Page
                       <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  </Link>
+                  </Button>
+                </Link>
                 </div>
               </div>
             </div>
@@ -597,21 +597,21 @@ export default function AboutUsSection() {
         </div>
 
         <AnimatePresence>
-          {isExpanded && (
-            <motion.div
+        {isExpanded && (
+          <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.5 }}
               className="space-y-8"
-            >
+          >
               <Card className="bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-2xl">
                 <CardContent className="pt-8 px-8 pb-8">
                   <p className="text-gray-700 leading-relaxed mb-4 text-lg">
-                    From web development to app design and digital marketing, we combine the best talents and industry insights to deliver exceptional results—on time, every time. Guided by a commitment to quality and collaboration, we manage every aspect of your project, ensuring seamless execution and your complete satisfaction.
-                  </p>
+                  From web development to app design and digital marketing, we combine the best talents and industry insights to deliver exceptional results—on time, every time. Guided by a commitment to quality and collaboration, we manage every aspect of your project, ensuring seamless execution and your complete satisfaction.
+                </p>
                   <p className="text-gray-700 leading-relaxed text-lg">
-                    Whether you're a small startup or an established enterprise, we are committed to helping you thrive in the digital landscape. We pride ourselves on our innovative approach, attention to detail, and dedication to client success.
+                  Whether you're a small startup or an established enterprise, we are committed to helping you thrive in the digital landscape. We pride ourselves on our innovative approach, attention to detail, and dedication to client success.
                   </p>
                 </CardContent>
               </Card>
@@ -637,12 +637,12 @@ export default function AboutUsSection() {
                         <h4 className="text-xl font-bold mb-3 text-gray-900">{service.title}</h4>
                         <p className="text-gray-600 leading-relaxed">
                           {service.description}
-                        </p>
-                      </CardContent>
-                    </Card>
+                  </p>
+                </CardContent>
+              </Card>
                   </motion.div>
                 ))}
-              </div>
+            </div>
 
               <Accordion type="single" collapsible className="bg-white/90 backdrop-blur-xl border border-gray-200/50 rounded-2xl shadow-2xl overflow-hidden">
                 <AccordionItem value="services" className="border-b border-gray-200/50">
@@ -650,26 +650,26 @@ export default function AboutUsSection() {
                     Our Core Services
                   </AccordionTrigger>
                   <AccordionContent className="px-6 text-gray-700">
-                    We offer a wide range of services including responsive web design, e-commerce solutions, content management systems, search engine optimization (SEO), pay-per-click advertising (PPC), social media marketing, email marketing, and more.
-                  </AccordionContent>
-                </AccordionItem>
+                  We offer a wide range of services including responsive web design, e-commerce solutions, content management systems, search engine optimization (SEO), pay-per-click advertising (PPC), social media marketing, email marketing, and more.
+                </AccordionContent>
+              </AccordionItem>
                 <AccordionItem value="process" className="border-b border-gray-200/50">
                   <AccordionTrigger className="px-6 hover:bg-gray-50/50 transition-colors">
                     Our Development Process
                   </AccordionTrigger>
                   <AccordionContent className="px-6 text-gray-700">
-                    Our development process involves thorough planning, design, development, testing, and deployment. We use agile methodologies to ensure flexibility and continuous improvement throughout the project lifecycle.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="technologies">
+                  Our development process involves thorough planning, design, development, testing, and deployment. We use agile methodologies to ensure flexibility and continuous improvement throughout the project lifecycle.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="technologies">
                   <AccordionTrigger className="px-6 hover:bg-gray-50/50 transition-colors">
                     Technologies We Use
                   </AccordionTrigger>
                   <AccordionContent className="px-6 text-gray-700">
-                    We work with a variety of modern technologies including React, Next.js, Node.js, Python, PHP, WordPress, and more. Our tech stack is always evolving to incorporate the latest and most effective tools in the industry.
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+                  We work with a variety of modern technologies including React, Next.js, Node.js, Python, PHP, WordPress, and more. Our tech stack is always evolving to incorporate the latest and most effective tools in the industry.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
 
               <div className="bg-gradient-to-br from-[#175379]/10 via-[#15158c]/10 to-[#e47a33]/10 backdrop-blur-xl border border-[#175379]/20 rounded-2xl p-8 shadow-2xl">
                 <h4 className="text-2xl font-bold mb-6 text-gray-900">Get in Touch</h4>
@@ -678,8 +678,8 @@ export default function AboutUsSection() {
                     <div className="p-2 bg-white/80 rounded-lg">
                       <Mail className="h-5 w-5 text-[#175379]" />
                     </div>
-                    <span>Email: info@fundi-mtandao.com</span>
-                  </div>
+                <span>Email: info@fundi-mtandao.com</span>
+              </div>
                   <Link href='/get-started' className="flex items-center gap-3 text-gray-700 hover:text-[#e47a33] transition-colors group">
                     <div className="p-2 bg-white/80 rounded-lg group-hover:bg-[#e47a33]/10 transition-colors">
                       <BarChart className="h-5 w-5 text-[#175379] group-hover:text-[#e47a33] transition-colors" />
@@ -687,9 +687,9 @@ export default function AboutUsSection() {
                     <span className="font-semibold">Schedule a Free Consultation</span>
                   </Link>
                 </div>
-              </div>
-            </motion.div>
-          )}
+            </div>
+          </motion.div>
+        )}
         </AnimatePresence>
       </div>
     </section>

@@ -300,57 +300,81 @@ export default function PortfolioPage() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-            <header ref={headerRef} className="py-20 text-center relative overflow-hidden" style={{ backgroundImage: 'url(/images/responsive-web.webp)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div className="min-h-screen bg-gradient-to-b from-slate-50 via-background to-secondary/10">
+            {/* Portfolio Hero */}
+            <header
+                ref={headerRef}
+                className="py-20 md:py-24 text-center relative overflow-hidden bg-gradient-to-br from-[#15158c] via-[#175379] to-[#e47a33] text-white"
+            >
                 <motion.div
                     className="absolute inset-0 z-0"
-                    initial={{ scale: 1.2, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 0.1 }}
+                    initial={{ scale: 1.1, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 0.25 }}
                     transition={{ duration: 0.8 }}
                 >
-                    <div className="absolute inset-0 bg-grid-white/10 bg-grid-16 [mask-image:radial-gradient(ellipse_at_center,white,transparent_75%)]" />
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_#ffffff55,_transparent_55%),radial-gradient(circle_at_bottom,_#00000066,_transparent_55%)]" />
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff22_1px,transparent_1px),linear-gradient(to_bottom,#ffffff22_1px,transparent_1px)] bg-[size:24px_24px]" />
                 </motion.div>
                 <div className="container mx-auto px-4 relative z-10">
+                    <motion.p
+                        className="text-xs md:text-sm uppercase tracking-[0.25em] text-white/70 mb-3"
+                        initial={{ y: -10, opacity: 0 }}
+                        animate={headerInView ? { y: 0, opacity: 1 } : {}}
+                        transition={{ duration: 0.4 }}
+                    >
+                        Portfolio
+                    </motion.p>
                     <motion.h1
-                        className="text-4xl text-white md:text-6xl font-bold mb-4"
-                        initial={{ y: -50, opacity: 0 }}
+                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 text-slate-900"
+                        initial={{ y: -40, opacity: 0 }}
                         animate={headerInView ? { y: 0, opacity: 1 } : {}}
                         transition={{ duration: 0.5 }}
                     >
-                        Our Portfolio
+                        Real projects for real Kenyan brands.
                     </motion.h1>
                     <motion.p
-                        className="text-xl text-white text-muted-foreground max-w-2xl mx-auto mb-8"
-                        initial={{ y: 50, opacity: 0 }}
+                        className="text-base sm:text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8"
+                        initial={{ y: 30, opacity: 0 }}
                         animate={headerInView ? { y: 0, opacity: 1 } : {}}
-                        transition={{ duration: 0.5, delay: 0.2 }}
+                        transition={{ duration: 0.5, delay: 0.15 }}
                     >
-                        Explore our showcase of innovative digital solutions that have transformed businesses and delighted users.
+                        Explore websites, platforms, and digital experiences we&apos;ve crafted for e‑commerce, hospitality,
+                        youth organizations, and more.
                     </motion.p>
                 </div>
             </header>
 
-            <main className="container mx-auto px-4 py-16">
-                <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
-                    <TabsList className="grid w-full grid-cols-5 text-xs md:grid-cols-5 bg-[#175379] text-white gap-2">
-                        <TabsTrigger value="all">All</TabsTrigger>
-                        <TabsTrigger value="react">React</TabsTrigger>
-                        <TabsTrigger value="python">Python</TabsTrigger>
-                        <TabsTrigger value="bootstrap">Bootstrap</TabsTrigger>
-                        <TabsTrigger value="Nextjs">NextJS</TabsTrigger>
-                    </TabsList>
-                </Tabs>
+            <main className="container mx-auto px-4 py-16 space-y-16">
+                <section aria-label="Filter portfolio projects by technology">
+                    <Tabs value={activeTab} onValueChange={setActiveTab} className="mb-12">
+                        <TabsList className="grid w-full grid-cols-5 text-xs md:grid-cols-5 bg-[#175379] text-white gap-2">
+                            <TabsTrigger value="all">All</TabsTrigger>
+                            <TabsTrigger value="react">React</TabsTrigger>
+                            <TabsTrigger value="python">Python</TabsTrigger>
+                            <TabsTrigger value="bootstrap">Bootstrap</TabsTrigger>
+                            <TabsTrigger value="Nextjs">NextJS</TabsTrigger>
+                        </TabsList>
+                    </Tabs>
+                </section>
 
-                <div className="space-y-16">
-                    {filterProjects(activeTab).map((project, index) => (
-                        <PortfolioItem key={project.id} project={project} index={index} />
-                    ))}
-                </div>
+                <section aria-labelledby="portfolio-list">
+                    <h2 id="portfolio-list" className="sr-only">
+                        List of portfolio projects
+                    </h2>
+                    <div className="space-y-16">
+                        {filterProjects(activeTab).map((project, index) => (
+                            <PortfolioItem key={project.id} project={project} index={index} />
+                        ))}
+                    </div>
+                </section>
 
-                <section className="mt-20 bg-primary/45 text-primary-foreground rounded-lg p-8">
+                <section className="mt-20 bg-slate-900/80 text-slate-50 rounded-lg p-8 backdrop-blur-xl border border-slate-800/60">
                     <div className="max-w-3xl mx-auto text-center">
-                        <h2 className="text-3xl font-bold mb-4">Ready to Bring Your Vision to Life?</h2>
-                        <p className="text-lg mb-8">Let's collaborate on your next digital project and create something extraordinary together.</p>
+                        <h2 className="text-3xl font-bold mb-4">Ready to bring your vision to life?</h2>
+                        <p className="text-lg mb-8">
+                            Let&apos;s collaborate on your next website or digital experience and create something your
+                            audience will remember.
+                        </p>
                         <div className="flex flex-col sm:flex-row justify-center gap-4">
                             <Button size="lg" variant="secondary" asChild>
                                 <Link href="/get-started">
