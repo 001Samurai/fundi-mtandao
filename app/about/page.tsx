@@ -9,6 +9,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { StructuredData } from "@/components/StructuredData"
+import { generatePersonSchema, generateBreadcrumbSchema, generateOrganizationSchema } from "@/lib/seo"
 
 const services = [
     { icon: Code, title: 'Web Development', description: 'Custom websites and web applications built with cutting-edge technologies.' },
@@ -38,7 +40,16 @@ export default function AboutPage() {
     }, [])
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-slate-50 via-background to-secondary/10">
+        <>
+            <StructuredData data={[
+                generatePersonSchema(),
+                generateOrganizationSchema(),
+                generateBreadcrumbSchema([
+                    { name: 'Home', url: 'https://fundi-wa-mtandao.co.ke' },
+                    { name: 'About', url: 'https://fundi-wa-mtandao.co.ke/about' }
+                ])
+            ]} />
+            <div className="min-h-screen bg-gradient-to-b from-slate-50 via-background to-secondary/10">
             {/* Hero / Page Header */}
             <motion.header
                 className="relative overflow-hidden bg-gradient-to-br from-[#15158c] via-[#175379] to-[#e47a33] text-white py-20 md:py-28"
@@ -273,5 +284,6 @@ export default function AboutPage() {
             </main>
 
         </div>
+        </>
     )
 }

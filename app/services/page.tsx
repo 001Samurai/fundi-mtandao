@@ -10,6 +10,8 @@ import { Badge } from "@/components/ui/badge"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Link from 'next/link'
 import { services, Service } from '@/data/serviceData'
+import { StructuredData } from "@/components/StructuredData"
+import { generateBreadcrumbSchema, generateFAQSchema, generateServiceSchema, siteConfig } from "@/lib/seo"
 
 export default function ServicesPage() {
     const [activeTab, setActiveTab] = useState('all')
@@ -21,8 +23,36 @@ export default function ServicesPage() {
         return services.filter(service => service.category === category)
     }
 
+    // FAQ data for structured data
+    const faqs = [
+        { question: 'What is your typical project timeline?', answer: 'Project timelines vary depending on the scope and complexity. A simple website might take 4-6 weeks, while more complex projects can take 2-3 months or more. We will provide a detailed timeline during our initial consultation.' },
+        { question: 'Do you offer ongoing maintenance and support?', answer: 'Yes, we offer various maintenance and support packages to ensure your digital assets remain up-to-date, secure, and performing optimally.' },
+        { question: 'How do you measure the success of your services?', answer: 'We establish clear KPIs at the beginning of each project and provide regular reports on these metrics. This may include website traffic, conversion rates, search engine rankings, and more.' },
+        { question: 'Can you work with my existing systems and tools?', answer: 'We are experienced in integrating with a wide range of existing systems and can recommend the best approach for your specific situation.' },
+    ]
+
+    // Generate service schemas for top services
+    const topServices = services.slice(0, 5).map(service => 
+        generateServiceSchema({
+            name: service.title,
+            description: service.description,
+            provider: siteConfig.name,
+            areaServed: 'KE',
+            serviceType: service.category
+        })
+    )
+
     return (
-        <div className="min-h-screen bg-gradient-to-b from-slate-50 via-background to-secondary/10">
+        <>
+            <StructuredData data={[
+                generateBreadcrumbSchema([
+                    { name: 'Home', url: 'https://fundi-wa-mtandao.co.ke' },
+                    { name: 'Services', url: 'https://fundi-wa-mtandao.co.ke/services' }
+                ]),
+                generateFAQSchema(faqs),
+                ...topServices
+            ]} />
+            <div className="min-h-screen bg-gradient-to-b from-slate-50 via-background to-secondary/10">
             {/* Hero / Services Header */}
             <header
                 ref={headerRef}
@@ -216,5 +246,6 @@ export default function ServicesPage() {
                 </section>
             </main>
         </div>
+        </>
     )
 }

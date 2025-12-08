@@ -10,6 +10,8 @@ import { Suspense } from 'react';
 import {
   ClerkProvider
 } from '@clerk/nextjs'
+import { DefaultStructuredData } from "@/components/StructuredData";
+import { siteConfig, generateMetadata as generateSEOMetadata } from "@/lib/seo";
 
 
 const geistSans = localFont({
@@ -23,38 +25,13 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Fundi wa Mtandao - Web Development & Digital Marketing Services",
-    template: "%s | Fundi wa Mtandao"
-  },
-  description: "Professional web development and digital marketing services to help your business grow online. Custom websites, website management, e-commerce solutions, M-pesa integration, SEO & analytics, social media marketing and digital strategies.",
-  keywords: ["web development", "web design", "digital marketing", "M-pesa integration", "social media marketing","social media management", "SEO", "web design", "Kenya", "Mombasa"],
-  authors: [{ name: "David Machua" }],
-  creator: "David Machua",
-  publisher: "Fundi wa Mtandao",
-  robots: {
-    index: true,
-    follow: true
-  },
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://fundi-wa-mtandao.co.ke',
-    siteName: 'Fundi wa Mtandao',
-    images: [{
-      url: '/images/og-image.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Fundi wa Mtandao - Web Development & Digital Marketing Services'
-    }]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    creator: '@fundi-wa-mtandao',
-    images: ['/images/twitter-image.jpg']
-  }
-};
+export const metadata: Metadata = generateSEOMetadata({
+  title: "Fundi wa Mtandao - Web Development & Digital Marketing Services in Kenya",
+  description: siteConfig.description,
+  keywords: siteConfig.keywords,
+  url: "/",
+  type: "website"
+});
 
 export default function RootLayout({
   children,
@@ -65,6 +42,7 @@ export default function RootLayout({
     <ClerkProvider> 
     <html lang="en">
       <head>
+        {/* Preload Critical Resources */}
         <link
           rel="preload"
           href="/fonts/GeistVF.woff"
@@ -79,8 +57,21 @@ export default function RootLayout({
           type="font/woff2"
           crossOrigin="anonymous"
         />
+        
+        {/* DNS Prefetch & Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fundi-mtandao.vercel.app" />
+        <link rel="dns-prefetch" href="https://vercel.live" />
+        
+        {/* Favicon and Icons */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        
+        {/* Structured Data */}
+        <DefaultStructuredData />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
